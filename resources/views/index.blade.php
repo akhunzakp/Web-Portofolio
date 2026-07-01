@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ $profile->name }} | {{ $profile->title }}</title>
+    <meta name="description" content="Portofolio Profesional {{ $profile->name }} — {{ $profile->title }}. Fokus pada integrasi estetika UI/UX dan keandalan sistem.">
+
+    {{-- Google Fonts: Poppins (Headings) + Inter (Body) --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        :root {
+            --font-heading: 'Poppins', system-ui, sans-serif;
+            --font-body:    'Inter',   system-ui, sans-serif;
+        }
+        html { 
+            font-family: var(--font-body); 
+            background-color: #F8FAFC;
+        }
+        h1, h2, h3, h4, .font-heading { font-family: var(--font-heading); }
+
+        /* Smooth scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track  { background: transparent; }
+        ::-webkit-scrollbar-thumb  { background: #2563EB33; border-radius: 99px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563EB55; }
+
+        /* Gradient text utility */
+        .gradient-text {
+            background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glassmorphic Cards with Soft Drop Shadows */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+        }
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.12);
+            border-color: rgba(37, 99, 235, 0.25);
+        }
+
+        /* Floating background shapes */
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+            animation: float 12s ease-in-out infinite alternate;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg) scale(1); }
+            100% { transform: translateY(-50px) rotate(120deg) scale(1.15); }
+        }
+
+        /* Nav link hover underline */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: linear-gradient(90deg, #2563EB, #7C3AED);
+            border-radius: 99px;
+            transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Bento Grid Interactive Highlight Glow */
+        .bento-highlight {
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-highlight::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(600px circle at var(--x, 0px) var(--y, 0px), rgba(37, 99, 235, 0.06), transparent 50%);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .bento-highlight:hover::before {
+            opacity: 1;
+        }
+
+        /* Grid Pattern Overlay */
+        .grid-pattern {
+            background-size: 30px 30px;
+            background-image: linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased relative min-h-screen overflow-x-hidden grid-pattern">
+
+    {{-- Glowing Blob Elements --}}
+    <div class="floating-shape w-[600px] h-[600px] bg-blue-500/10 top-[-150px] left-[-200px]"></div>
+    <div class="floating-shape w-[500px] h-[500px] bg-purple-500/8 bottom-[100px] right-[-150px]" style="animation-delay: -6s;"></div>
+    <div class="floating-shape w-[400px] h-[400px] bg-indigo-500/5 top-[40%] left-[30%]" style="animation-delay: -3s;"></div>
+
+    {{-- ================================================================
+         STICKY GLASSMORPHIC NAVIGATION BAR
+    ================================================================ --}}
+    <header id="navbar" class="sticky top-0 z-50 backdrop-blur-lg bg-white/80 border-b border-slate-200/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+
+                {{-- Branding --}}
+                <a href="#home" class="flex items-center gap-2.5 group relative z-10">
+                    <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white font-heading font-extrabold text-base shadow-md group-hover:scale-105 transition-transform duration-300">
+                        {{ mb_substr($profile->name, 0, 1) }}
+                    </span>
+                    <span class="text-lg font-heading font-bold text-slate-900 tracking-tight">
+                        Putra<span class="text-[#2563EB]">.</span>
+                    </span>
+                </a>
+
+                {{-- Menus --}}
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#home"     class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Beranda</a>
+                    <a href="#skills"   class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Keahlian</a>
+                    <a href="#timeline" class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Alur Kerja</a>
+                    <a href="#projects" class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Portofolio</a>
+                </nav>
+
+                {{-- Actions --}}
+                <div class="flex items-center gap-4 relative z-10">
+                    {{-- Social Links --}}
+                    @if(!empty($profile->social_links['github']))
+                        <a href="{{ $profile->social_links['github'] }}" target="_blank" class="text-slate-400 hover:text-[#2563EB] transition-colors duration-200" title="GitHub">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                        </a>
+                    @endif
+                    @if(!empty($profile->social_links['linkedin']))
+                        <a href="{{ $profile->social_links['linkedin'] }}" target="_blank" class="text-slate-400 hover:text-[#2563EB] transition-colors duration-200" title="LinkedIn">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    @endif
+
+                    <div class="w-px h-4 bg-slate-200"></div>
+
+                    {{-- Admin Dashboard shortcut --}}
+                    <a href="{{ url('/admin') }}" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600 transition-colors">
+                        Admin
+                    </a>
+
+                    {{-- Mobile menu trigger --}}
+                    <button id="mobile-menu-btn" aria-label="Buka menu"
+                        class="flex md:hidden items-center justify-center w-10 h-10 rounded-xl bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors duration-200">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        {{-- Mobile dropdown menu --}}
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200/50 bg-white/95 backdrop-blur-md">
+            <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1.5">
+                <a href="#home"     class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Beranda</a>
+                <a href="#skills"   class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Keahlian</a>
+                <a href="#timeline" class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Alur Kerja</a>
+                <a href="#projects" class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Portofolio</a>
+            </div>
+        </div>
+    </header>
+
+    {{-- ================================================================
+         HERO SECTION
+    ================================================================ --}}
+    <section id="home" class="relative overflow-hidden py-24 lg:py-36">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+
+                {{-- Left: Description copy --}}
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    {{-- Glowing Leadership pill --}}
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-8">
+                        <span class="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span>
+                        <span class="text-xs font-bold text-[#2563EB] tracking-wide font-heading">
+                            Wakil Ketua Umum DPM Polinema
+                        </span>
+                    </div>
+
+                    {{-- Main dynamic heading --}}
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-6">
+                        Merancang Antarmuka<br>
+                        Pengguna <span class="gradient-text">Beresolusi Tinggi</span><br>
+                        & Arsitektur Front-End<br>
+                        yang Tangguh.
+                    </h1>
+
+                    {{-- Bio description --}}
+                    <p class="text-base sm:text-lg text-slate-500 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 font-medium">
+                        {{ $profile->bio }}
+                    </p>
+
+                    {{-- Buttons CTAs --}}
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#" onclick="alert('Berkas CV diunduh secara lokal.'); return false;"
+                            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-lg shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0">
+                            <svg class="w-4.5 h-4.5 transition-transform duration-200 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                            Unduh CV
+                        </a>
+                        <a href="mailto:{{ $profile->contact_email }}"
+                            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-[#2563EB] bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
+                            <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+
+                {{-- Right: Profile Bento box shape --}}
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-80 h-80 sm:w-96 sm:h-96">
+                        {{-- Drop shadows glow --}}
+                        <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#2563EB] to-[#7C3AED] rotate-6 opacity-15 blur-2xl animate-pulse"></div>
+                        <div class="absolute inset-0 rounded-3xl bg-gradient-to-bl from-blue-400 to-indigo-600 -rotate-3 opacity-10 blur-lg"></div>
+
+                        {{-- Bento profile --}}
+                        <div class="relative w-full h-full bg-white rounded-3xl border border-slate-200 shadow-2xl p-8 flex flex-col justify-between overflow-hidden">
+                            <div class="flex justify-between items-start">
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white font-heading font-extrabold text-3xl shadow-lg shadow-blue-500/20">
+                                    {{ mb_substr($profile->name, 0, 1) }}
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    Tersedia
+                                </span>
+                            </div>
+
+                            <div>
+                                <h3 class="font-heading font-bold text-xl text-slate-900 leading-tight">
+                                    {{ $profile->name }}
+                                </h3>
+                                <p class="text-xs font-semibold text-[#2563EB] mt-1 uppercase tracking-wider">
+                                    {{ $profile->title }}
+                                </p>
+                                <p class="text-xs text-slate-400 mt-2 font-medium">
+                                    Politeknik Negeri Malang
+                                </p>
+                            </div>
+
+                            <div class="flex flex-wrap gap-1.5 border-t border-slate-100 pt-4">
+                                <span class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600">Laravel</span>
+                                <span class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600">Next.js</span>
+                                <span class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- ================================================================
+         SKILLS MATRIKS BENTO GRID
+    ================================================================ --}}
+    <section id="skills" class="py-24 bg-white border-y border-slate-200/80 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            {{-- Title headers --}}
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Kompetensi</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Matriks Keahlian Bento
+                </h2>
+                <p class="mt-4 text-slate-500 text-base leading-relaxed font-medium">
+                    Pengelompokan kapabilitas teknis terstruktur dengan penekanan pada rekayasa front-end, alur data back-end, dan pemodelan antarmuka.
+                </p>
+            </div>
+
+            {{-- Asymmetric Bento layout --}}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                {{-- Box 1: Frontend (Wide) --}}
+                @php
+                    $frontendSkills = $skills->get('frontend', collect());
+                @endphp
+                <div class="glass-card bento-highlight lg:col-span-2 rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3.5 mb-4">
+                            <div class="w-11 h-11 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-slate-900 leading-tight">Pengembangan Front-End</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Mewujudkan desain presisi dan pengelolaan state adaptif.</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-6 font-medium">
+                            Mengintegrasikan arsitektur modular dengan optimasi pemuatan halaman yang berfokus pada pengalaman pengguna berskala besar.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-auto">
+                        @foreach($frontendSkills as $sk)
+                            <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100/80 hover:border-slate-200/80 hover:bg-white transition-all duration-200">
+                                <div class="mt-1 w-2 h-2 rounded-full bg-blue-500 shrink-0"></div>
+                                <div class="min-w-0">
+                                    <h4 class="text-xs font-bold text-slate-900 leading-none truncate">{{ $sk->name }}</h4>
+                                    <span class="text-[10px] text-slate-400 mt-1 block leading-none font-semibold">{{ $sk->capability_tag }}</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                {{-- Box 2: Backend (Tall) --}}
+                @php
+                    $backendSkills = $skills->get('backend', collect());
+                @endphp
+                <div class="glass-card bento-highlight lg:row-span-2 rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3.5 mb-4">
+                            <div class="w-11 h-11 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 border border-indigo-100">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-slate-900 leading-tight">Infrastruktur Back-End</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Optimasi pipa data relasional dan pengembangan API logis.</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-6 font-medium">
+                            Membangun lapisan logika bisnis kokoh didukung pemodelan kueri terindeks secara optimal untuk efisiensi komputasi server.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col gap-3.5 mt-auto">
+                        @foreach($backendSkills as $sk)
+                            <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100/80 hover:border-slate-200/80 hover:bg-white transition-all duration-200">
+                                <div class="mt-1 w-2 h-2 rounded-full bg-indigo-500 shrink-0"></div>
+                                <div class="min-w-0">
+                                    <h4 class="text-xs font-bold text-slate-900 leading-none truncate">{{ $sk->name }}</h4>
+                                    <span class="text-[10px] text-slate-400 mt-1 block leading-none font-semibold">{{ $sk->capability_tag }}</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+                {{-- Box 3: Design Tools (Wide Bottom) --}}
+                @php
+                    $designSkills = $skills->get('design_tools', collect());
+                @endphp
+                <div class="glass-card bento-highlight lg:col-span-2 rounded-3xl p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-3.5 mb-4">
+                            <div class="w-11 h-11 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center flex-shrink-0 border border-pink-100">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-slate-900 leading-tight">Desain & Alat Kolaborasi</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Pembuatan cetak biru digital interaktif dan alur kontrol versi.</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-relaxed mb-6 font-medium">
+                            Merancang kerangka desain modular berbasis komponen pada Figma, diiringi integrasi alur pengembangan Git terstruktur.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-auto">
+                        @foreach($designSkills as $sk)
+                            <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100/80 hover:border-slate-200/80 hover:bg-white transition-all duration-200">
+                                <div class="mt-1 w-2 h-2 rounded-full bg-pink-500 shrink-0"></div>
+                                <div class="min-w-0">
+                                    <h4 class="text-xs font-bold text-slate-900 leading-none truncate">{{ $sk->name }}</h4>
+                                    <span class="text-[10px] text-slate-400 mt-1 block leading-none font-semibold">{{ $sk->capability_tag }}</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    {{-- ================================================================
+         WORKFLOW & TIMELINE SECTION
+    ================================================================ --}}
+    <section id="timeline" class="py-24 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            {{-- Section titles --}}
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Linimasa</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Alur Kerja & Rekam Jejak
+                </h2>
+                <p class="mt-4 text-slate-500 text-base font-medium">
+                    Jejak langkah pengasahan disiplin akademik, manajemen kepemimpinan organisasi, dan inovasi rekayasa perangkat lunak.
+                </p>
+            </div>
+
+            {{-- Timeline steps --}}
+            <div class="relative border-l-2 border-slate-200/80 ml-4 md:ml-32 pl-8 space-y-12">
+                
+                {{-- Timeline Step 1 --}}
+                <div class="relative">
+                    {{-- Blue indicator --}}
+                    <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
+                    
+                    {{-- Side label for date --}}
+                    <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
+                        2019 - 2022
+                    </span>
+                    
+                    <div class="glass-card rounded-2xl p-6">
+                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2019 - 2022</span>
+                        <h3 class="font-heading font-bold text-slate-900 text-base">SMAN 3 Taruna Angkasa Madiun</h3>
+                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">Pendidikan Disiplin & Administrasi Komunitas</p>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-3 font-medium">
+                            Membentuk fondasi kedisiplinan yang kokoh melalui kurikulum semi-militer taruna. Berperan aktif dalam rekayasa jejaring internal alumni serta memimpin struktur tata kelola informasi media sosial untuk portal digital Antareksa.
+                        </p>
+                    </div>
+                </div>
+
+                {{-- Timeline Step 2 --}}
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
+                    
+                    <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
+                        2022 - Selesai
+                    </span>
+
+                    <div class="glass-card rounded-2xl p-6">
+                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2022 - Selesai</span>
+                        <h3 class="font-heading font-bold text-slate-900 text-base">Politeknik Negeri Malang</h3>
+                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">D4 Teknik Informatika - Rekayasa Perangkat Lunak</p>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-3 font-medium">
+                            Mendalami teknik arsitektur perangkat lunak skala tinggi, optimalisasi database relasional, dan pola integrasi API terdistribusi. Menyeimbangkan rekayasa sistem dengan tata kelola kepemimpinan sebagai Wakil Ketua Dewan Perwakilan Mahasiswa (DPM).
+                        </p>
+                    </div>
+                </div>
+
+                {{-- Timeline Step 3 --}}
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
+                    
+                    <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
+                        Eksplorasi
+                    </span>
+
+                    <div class="glass-card rounded-2xl p-6">
+                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">Eksplorasi</span>
+                        <h3 class="font-heading font-bold text-slate-900 text-base">Eksplorasi Perangkat Lunak & Riset</h3>
+                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">Fokus Front-End, UI/UX, & Praktik Green Computing</p>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-3 font-medium">
+                            Fokus riset terarah pada optimalisasi performa antarmuka pengguna berbasis komponen, efisiensi rendering sisi server, serta penghematan daya komputasi kueri server (Green Computing) pada sistem database pergudangan data OLAP.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    {{-- ================================================================
+         GALERI PORTOFOLIO BENTO GRID SHOWCASE
+    ================================================================ --}}
+    <section id="projects" class="py-24 bg-white border-t border-slate-200/80 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            {{-- Section Title --}}
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Galeri Portofolio</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Showcase Rekayasa Aplikasi
+                </h2>
+                <p class="mt-4 text-slate-500 text-base font-medium">
+                    Koleksi proyek pilihan yang mendemonstrasikan implementasi antarmuka adaptif, skalabilitas platform, dan integritas pengolahan data.
+                </p>
+            </div>
+
+            {{-- Bento Box Projects --}}
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                @forelse($projects as $index => $project)
+                    @php
+                        // Asymmetric Grid Bento Box layout logic for 3 elements:
+                        // Project 1 (Fruityfy): col-span-2
+                        // Project 2 (Antareksa): col-span-1
+                        // Project 3 (OLAP): col-span-3 (wide banner)
+                        $span = 'lg:col-span-1';
+                        if ($index === 0) {
+                            $span = 'lg:col-span-2';
+                        } elseif ($index === 2) {
+                            $span = 'lg:col-span-3';
+                        }
+
+                        $accent = 'from-blue-500 to-indigo-600';
+                        $iconPath = '<path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>';
+                        if (Str::contains(strtolower($project->title), 'fruityfy')) {
+                            $accent = 'from-emerald-500 to-teal-600';
+                            $iconPath = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/>';
+                        } elseif (Str::contains(strtolower($project->title), 'antareksa')) {
+                            $accent = 'from-indigo-500 to-purple-600';
+                            $iconPath = '<path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>';
+                        } elseif (Str::contains(strtolower($project->title), 'olap') || Str::contains(strtolower($project->title), 'data')) {
+                            $accent = 'from-amber-500 to-orange-600';
+                            $iconPath = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>';
+                        }
+                    @endphp
+
+                    <div class="glass-card {{ $span }} rounded-3xl overflow-hidden flex flex-col justify-between bg-white border border-slate-200">
+                        <div>
+                            {{-- Visual Header Banner --}}
+                            <div class="relative h-48 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col items-center justify-center gap-3">
+                                <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(0deg, #fff 0px, #fff 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, #fff 0px, #fff 1px, transparent 1px, transparent 40px);"></div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+
+                                @if($project->image_path)
+                                    <img src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->title }}" class="absolute inset-0 w-full h-full object-cover opacity-20">
+                                @endif
+
+                                <div class="relative z-10 w-11 h-11 rounded-2xl bg-gradient-to-br {{ $accent }} flex items-center justify-center shadow-lg shadow-black/10">
+                                    <svg class="w-5.5 h-5.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">{!! $iconPath !!}</svg>
+                                </div>
+
+                                @if($project->is_featured)
+                                    <span class="relative z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-bold bg-[#2563EB] text-white shadow-md uppercase tracking-wider">
+                                        ★ Unggulan
+                                    </span>
+                                @endif
+                            </div>
+
+                            {{-- Project Meta and Body --}}
+                            <div class="p-8">
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    @foreach($project->tech_stack ?? [] as $t)
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50">
+                                            {{ $t }}
+                                        </span>
+                                    @endforeach
+                                </div>
+
+                                <h3 class="font-heading font-bold text-lg text-slate-900 mb-2 leading-tight">
+                                    {{ $project->title }}
+                                </h3>
+
+                                <p class="text-xs text-slate-500 leading-relaxed font-medium">
+                                    {{ $project->description }}
+                                </p>
+                            </div>
+                        </div>
+
+                        {{-- Footer Link --}}
+                        <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
+                            @if($project->project_url)
+                                <a href="{{ $project->project_url }}" target="_blank"
+                                    class="text-xs font-bold text-[#2563EB] hover:underline underline-offset-2">
+                                    Akses Demo →
+                                </a>
+                            @else
+                                <span class="text-xs font-bold text-slate-400">
+                                    Akses Demo Internal
+                                </span>
+                            @endif
+
+                            @if($project->github_url)
+                                <a href="{{ $project->github_url }}" target="_blank"
+                                    class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-[#2563EB] transition-colors duration-150">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                                    Repository GitHub
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                @empty
+                    <p class="col-span-full text-center text-slate-400 italic py-12">Tidak ada proyek yang ditemukan.</p>
+                @endforelse
+            </div>
+
+        </div>
+    </section>
+
+    {{-- ================================================================
+         CONTACT SECTION
+    ================================================================ --}}
+    <section id="contact" class="py-24 bg-slate-50 transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-14">
+                <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Hubungi Saya</span>
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Diskusikan Proyek Anda
+                </h2>
+                <p class="mt-4 text-slate-500 text-sm font-medium">
+                    Terbuka untuk kolaborasi perangkat lunak, proyek freelance, atau posisi magang. Tanggapan akan diberikan dalam kurun waktu 24 jam.
+                </p>
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden md:grid md:grid-cols-5 bg-white border border-slate-200">
+                {{-- Left panel --}}
+                <div class="md:col-span-2 bg-gradient-to-br from-[#2563EB] to-[#7C3AED] p-8 flex flex-col justify-between text-white shadow-xl shadow-blue-500/10">
+                    <div>
+                        <h3 class="font-heading font-bold text-lg mb-2">Informasi Kontak</h3>
+                        <p class="text-blue-100 text-xs leading-relaxed mb-8">Hubungi melalui media komunikasi digital di bawah ini.</p>
+
+                        <div class="space-y-4">
+                            <a href="mailto:{{ $profile->contact_email }}" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
+                                <span class="w-8.5 h-8.5 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors shrink-0">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                                </span>
+                                <span class="truncate font-semibold">{{ $profile->contact_email }}</span>
+                            </a>
+                            @if(!empty($profile->social_links['github']))
+                                <a href="{{ $profile->social_links['github'] }}" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
+                                    <span class="w-8.5 h-8.5 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors shrink-0">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+                                    </span>
+                                    <span class="font-semibold">github.com/akhunzakp</span>
+                                </a>
+                            @endif
+                            <div class="flex items-center gap-3 text-blue-100 text-xs">
+                                <span class="w-8.5 h-8.5 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                                </span>
+                                <span class="font-semibold">Malang, Indonesia (GMT+7)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 pt-4 border-t border-white/10 mt-8">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="text-[10px] text-blue-100 font-bold tracking-wide uppercase">Aktif</span>
+                    </div>
+                </div>
+
+                {{-- Right Panel Form --}}
+                <div class="md:col-span-3 p-8">
+                    <form onsubmit="event.preventDefault(); alert('Pesan Anda berhasil dikirim. Terima kasih!');" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-400 mb-1.5 uppercase tracking-wide" for="contact-name">Nama Anda</label>
+                                <input type="text" id="contact-name" required placeholder="John Doe"
+                                    class="w-full px-4 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 text-[#0F172A] focus:ring-2 focus:ring-[#2563EB]/25 focus:border-[#2563EB] outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-400 mb-1.5 uppercase tracking-wide" for="contact-email">Alamat Email</label>
+                                <input type="email" id="contact-email" required placeholder="email@contoh.com"
+                                    class="w-full px-4 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 text-[#0F172A] focus:ring-2 focus:ring-[#2563EB]/25 focus:border-[#2563EB] outline-none transition-all">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 mb-1.5 uppercase tracking-wide" for="contact-subject">Subjek</label>
+                            <input type="text" id="contact-subject" placeholder="Tawaran Kerja / Pertanyaan Proyek"
+                                class="w-full px-4 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 text-[#0F172A] focus:ring-2 focus:ring-[#2563EB]/25 focus:border-[#2563EB] outline-none transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-slate-400 mb-1.5 uppercase tracking-wide" for="contact-message">Pesan Anda</label>
+                            <textarea id="contact-message" rows="4" required placeholder="Tuliskan pesan detail Anda di sini..."
+                                class="w-full px-4 py-2.5 rounded-xl text-xs bg-slate-50 border border-slate-200 text-[#0F172A] focus:ring-2 focus:ring-[#2563EB]/25 focus:border-[#2563EB] outline-none resize-none"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold text-white bg-[#2563EB] hover:bg-[#1D4ED8] shadow-md shadow-blue-500/25 transition-all">
+                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                            </svg>
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    {{-- ================================================================
+         FOOTER
+    ================================================================ --}}
+    <footer class="bg-white border-t border-slate-200/80 py-10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+                <p class="text-xs text-slate-400 font-medium">
+                    &copy; {{ date('Y') }} <span class="font-semibold text-slate-600">{{ $profile->name }}</span>. Hak Cipta Dilindungi Undang-Undang.
+                </p>
+                <div class="flex items-center gap-6">
+                    <a href="#home"     class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Beranda</a>
+                    <a href="#skills"   class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Keahlian</a>
+                    <a href="#timeline" class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Alur Kerja</a>
+                    <a href="#projects" class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Portofolio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {{-- ================================================================
+         JAVASCRIPT — Mobile Menu + Bento Mouse Coordinate Glow Effect
+    ================================================================ --}}
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu    = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        // --- Navbar shadow on scroll ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md', 'shadow-slate-200/40');
+            } else {
+                navbar.classList.remove('shadow-md', 'shadow-slate-200/40');
+            }
+        });
+
+        // --- Bento Card Hover Mouse Coordinate Glow Effect ---
+        const bentoCards = document.querySelectorAll('.bento-highlight');
+        bentoCards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--x', `${x}px`);
+                card.style.setProperty('--y', `${y}px`);
+            });
+        });
+
+        // --- Smooth scroll active link highlight ---
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('header a.nav-link');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(link => {
+                        const isActive = link.getAttribute('href') === '#' + entry.target.id;
+                        link.classList.toggle('text-[#2563EB]', isActive);
+                        link.classList.toggle('border-b-2', isActive);
+                    });
+                }
+            });
+        }, { threshold: 0.4 });
+
+        sections.forEach(s => observer.observe(s));
+    </script>
+
+</body>
+</html>
