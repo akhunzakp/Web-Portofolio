@@ -214,13 +214,21 @@
 
                     
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="mailto:<?php echo e($profile->contact_email); ?>"
+
+                        <a href="mailto:<?php echo e($profile->contact_email); ?>?subject=Tanya%20Projek%20Portofolio"
                             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-[#2563EB] bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
                             <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
                             Contact me
                         </a>
+                        <!-- <a href="mailto:<?php echo e($profile->contact_email); ?>"
+                            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-[#2563EB] bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
+                            <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            Contact me
+                        </a> -->
                         <a href="<?php echo e(asset('files/CV Yuma Akhunza.pdf')); ?>" download="CV_Yuma_Akhunza.pdf"
                             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-lg shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0">
                                 
@@ -509,14 +517,14 @@
                 <?php $__empty_1 = true; $__currentLoopData = $projects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                     <?php
                         // Asymmetric Grid Bento Box layout logic for 3 elements:
-                        // Project 1 (Fruityfy): col-span-2
+                        // Project 1 (Fruityfy): col-span-1
                         // Project 2 (Antareksa): col-span-1
-                        // Project 3 (OLAP): col-span-3 (wide banner)
+                        // Project 3 (OLAP): col-span-1 (wide banner)
                         $span = 'lg:col-span-1';
                         if ($index === 0) {
-                            $span = 'lg:col-span-2';
+                            $span = 'lg:col-span-1';
                         } elseif ($index === 2) {
-                            $span = 'lg:col-span-3';
+                            $span = 'lg:col-span-1';
                         }
 
                         $accent = 'from-blue-500 to-indigo-600';
@@ -583,7 +591,7 @@
                             <?php if($project->project_url): ?>
                                 <a href="<?php echo e($project->project_url); ?>" target="_blank"
                                     class="text-xs font-bold text-[#2563EB] hover:underline underline-offset-2">
-                                    <!-- Akses Demo → -->
+                                    Akses Demo →
                                 </a>
                             <?php else: ?>
                                 <span class="text-xs font-bold text-slate-400">
@@ -643,12 +651,14 @@
                                     <span class="font-semibold">github.com/akhunzakp</span>
                                 </a>
                             <?php endif; ?>
-                            <div class="flex items-center gap-3 text-blue-100 text-xs">
-                                <span class="w-8.5 h-8.5 rounded-xl bg-white/10 flex items-center justify-center shrink-0">
+
+                            <a href="https://maps.app.goo.gl/NdFKTGZJx1uSRAPcA" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
+                                <span class="w-8.5 h-8.5 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors shrink-0">
                                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                                 </span>
-                                <span class="font-semibold">Malang, Indonesia (GMT+7)</span>
-                            </div>
+                                <span class="font-semibold">Madiun, East Java, Indonesia</span>
+                            </a>
+
                         </div>
                     </div>
                     <!-- <div class="flex items-center gap-2 pt-4 border-t border-white/10 mt-8">
