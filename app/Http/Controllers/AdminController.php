@@ -33,7 +33,7 @@ class AdminController extends Controller
         ]);
 
         $envUsername = env('ADMIN_USERNAME', 'admin');
-        $envPassword = env('ADMIN_PASSWORD', 'password123');
+        $envPassword = env('ADMIN_PASSWORD', 'admin');
 
         if ($credentials['username'] === $envUsername && $credentials['password'] === $envPassword) {
             session(['admin_logged_in' => true]);
@@ -138,7 +138,7 @@ class AdminController extends Controller
 
         Project::create([
             'title' => $data['title'],
-            'slug' => Str::slug($data['title']),
+            'slug' => Str::slug($data['title']) . '-' . uniqid(),
             'description' => $data['description'],
             'image_path' => $imagePath,
             'tech_stack' => $techArray,
@@ -175,7 +175,7 @@ class AdminController extends Controller
         $techArray = array_map('trim', explode(',', $data['tech_stack']));
 
         $project->title = $data['title'];
-        $project->slug = Str::slug($data['title']);
+        $project->slug = Str::slug($data['title']) . '-' . $project->id;
         $project->description = $data['description'];
         $project->tech_stack = $techArray;
         $project->project_url = $data['project_url'];

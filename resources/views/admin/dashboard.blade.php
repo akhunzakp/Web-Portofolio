@@ -32,13 +32,12 @@
     <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700/50 sticky top-0 z-40 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-heading font-extrabold text-sm shadow-md">P</span>
-                <span class="font-heading font-bold text-lg">Portfolio Admin</span>
+                <span class="font-heading font-bold text-lg">Dashboard Admin</span>
             </div>
             
             <div class="flex items-center gap-4">
                 <a href="{{ url('/') }}" target="_blank" class="text-xs font-semibold text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors">
-                    View Live Site ↗
+                    View Live Site
                 </a>
                 <form action="{{ route('admin.logout') }}" method="POST">
                     @csrf
@@ -77,7 +76,7 @@
             <div class="bg-white dark:bg-slate-800 rounded-3xl border border-slate-200/50 dark:border-slate-700/50 shadow-md p-6 max-w-3xl">
                 <h2 class="text-xl font-bold font-heading mb-6">Manage Professional Profile</h2>
                 
-                <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <form action="{{ route('admin.profile.update') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -135,11 +134,12 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="flex gap-2 pt-2">        
                     <button type="submit"
                         class="px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors">
-                        Save Profile Changes
+                        Submit
                     </button>
+    </div>
                 </form>
             </div>
         </div>

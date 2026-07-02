@@ -124,21 +124,21 @@
 
                 
                 <a href="#home" class="flex items-center gap-2.5 group relative z-10">
-                    <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white font-heading font-extrabold text-base shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <!-- <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white font-heading font-extrabold text-base shadow-md group-hover:scale-105 transition-transform duration-300">
                         <?php echo e(mb_substr($profile->name, 0, 1)); ?>
 
-                    </span>
+                    </span> -->
                     <span class="text-lg font-heading font-bold text-slate-900 tracking-tight">
-                        Putra<span class="text-[#2563EB]">.</span>
+                        UI/UX & Visual Designer <span class="text-[#2563EB]">Enthusiast</span>
                     </span>
                 </a>
 
                 
                 <nav class="hidden md:flex items-center gap-8">
-                    <a href="#home"     class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Beranda</a>
-                    <a href="#skills"   class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Keahlian</a>
-                    <a href="#timeline" class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Alur Kerja</a>
-                    <a href="#projects" class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Portofolio</a>
+                    <a href="#home"     class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Home page</a>
+                    <a href="#skills"   class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Experience</a>
+                    <a href="#timeline" class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Tech Stack</a>
+                    <a href="#projects" class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Project</a>
                 </nav>
 
                 
@@ -176,10 +176,10 @@
         
         <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200/50 bg-white/95 backdrop-blur-md">
             <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1.5">
-                <a href="#home"     class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Beranda</a>
-                <a href="#skills"   class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Keahlian</a>
-                <a href="#timeline" class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Alur Kerja</a>
-                <a href="#projects" class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Portofolio</a>
+                <a href="#home"     class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Home page</a>
+                <a href="#skills"   class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Tech Stack</a>
+                <a href="#timeline" class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Experience</a>
+                <a href="#projects" class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Project</a>
             </div>
         </div>
     </header>
@@ -193,18 +193,17 @@
                 <div class="lg:col-span-7 text-center lg:text-left">
                     
                     <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-8">
-                        <span class="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span>
+                        <!-- <span class="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span> -->
                         <span class="text-xs font-bold text-[#2563EB] tracking-wide font-heading">
-                            Wakil Ketua Umum DPM Polinema
+                            Get in Touch
                         </span>
                     </div>
 
                     
                     <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-6">
-                        Merancang Antarmuka<br>
-                        Pengguna <span class="gradient-text">Beresolusi Tinggi</span><br>
-                        & Arsitektur Front-End<br>
-                        yang Tangguh.
+                        <span class="gradient-text">Hi, I'm</span> Putra<br>
+                        I Build Thing for the Web
+
                     </h1>
 
                     
@@ -215,20 +214,28 @@
 
                     
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                        <a href="#" onclick="alert('Berkas CV diunduh secara lokal.'); return false;"
-                            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-lg shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0">
-                            <svg class="w-4.5 h-4.5 transition-transform duration-200 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                            </svg>
-                            Unduh CV
-                        </a>
                         <a href="mailto:<?php echo e($profile->contact_email); ?>"
                             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-[#2563EB] bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
                             <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
-                            Hubungi Saya
+                            Contact me
                         </a>
+                        <a href="<?php echo e(asset('files/CV Yuma Akhunza.pdf')); ?>" download="CV_Yuma_Akhunza.pdf"
+                            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-lg shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0">
+                                
+                                <svg class="w-4.5 h-4.5 transition-transform duration-200 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                </svg>
+                                Download CV
+                        </a>
+                        <!-- <a href="#" onclick="alert('Berkas CV diunduh secara lokal.'); return false;"
+                            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-lg shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0">
+                            <svg class="w-4.5 h-4.5 transition-transform duration-200 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                            Download CV
+                        </a> -->
                     </div>
                 </div>
 
@@ -240,16 +247,16 @@
                         <div class="absolute inset-0 rounded-3xl bg-gradient-to-bl from-blue-400 to-indigo-600 -rotate-3 opacity-10 blur-lg"></div>
 
                         
-                        <div class="relative w-full h-full bg-white rounded-3xl border border-slate-200 shadow-2xl p-8 flex flex-col justify-between overflow-hidden">
+                        <div class="relative w-full h-full bg-white rounded-3xl border border-slate-200 shadow-2xl p-8 flex flex-col justify-between overflow-hidden ">
                             <div class="flex justify-between items-start">
                                 <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white font-heading font-extrabold text-3xl shadow-lg shadow-blue-500/20">
                                     <?php echo e(mb_substr($profile->name, 0, 1)); ?>
 
                                 </div>
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
+                                <!-- <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                                     Tersedia
-                                </span>
+                                </span>  -->
                             </div>
 
                             <div>
@@ -267,9 +274,10 @@
                             </div>
 
                             <div class="flex flex-wrap gap-1.5 border-t border-slate-100 pt-4">
-                                <span class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600">Laravel</span>
-                                <span class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600">Next.js</span>
-                                <span class="text-[10px] font-bold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600">Tailwind</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50">Laravel</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50">Flutter</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50">Figma</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50">Canva</span>
                             </div>
                         </div>
                     </div>
@@ -283,14 +291,95 @@
     <section id="skills" class="py-24 bg-white border-y border-slate-200/80 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+
+
             
             <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Kompetensi</span>
+                <!-- <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Linimasa</span> -->
                 <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
-                    Matriks Keahlian Bento
+                    Experience
+                </h2>
+                <p class="mt-4 text-slate-500 text-base font-medium">
+                    A journey marked by the honing of academic discipline, organizational leadership management, and software engineering innovation.                </p>
+            </div>
+
+            
+            <div class="relative border-l-2 border-slate-200/80 ml-4 md:ml-32 pl-8 space-y-12">
+                
+                
+                <div class="relative">
+                    
+                    <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
+                    
+                    
+                    <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
+                        2019 - 2022
+                    </span>
+                    
+                    <div class="glass-card rounded-2xl p-6 bento-highlight">
+                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2019 - 2022</span>
+                        <h3 class="font-heading font-bold text-slate-900 text-base">SMAN 3 Taruna Angkasa</h3>
+                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">Senior High School, Natural Science</p>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-3 font-medium">
+                            Head of ICT Division (OSIS), Digital Literacy Coordinator, and Active Member of Scout Organization (Pramuka).
+                            <br>As the Head of ICT Division, I managed the school's digital branding and content strategy, successfully publishing 50+ creative assets for social media. I also focused on maintaining high academic standards in science and mathematics, while developing early technical skills in digital design.
+                        </p>
+                    </div>
+                </div>
+
+                
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
+                    
+                    <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
+                        2022 - Present
+                    </span>
+
+                    <div class="glass-card rounded-2xl p-6 bento-highlight">
+                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2022 - Selesai</span>
+                        <h3 class="font-heading font-bold text-slate-900 text-base">State Polytechnic of Malang</h3>
+                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">Bachelor of Applied Science in Informatics Engineering</p>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-3 font-medium">
+                            Vice Chairman of Student Representative Council (DPM), Head of Batch 2023 (DPM).
+                            <br>Focused on Software Engineering, Mobile Development, and UI/UX Design. Active in Student Representative Council (DPM) and various technical projects.
+                        </p>
+                    </div>
+                </div>
+
+                
+                <div class="relative">
+                    <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
+                    
+                    <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
+                        2026 - Present
+                    </span>
+
+                    <div class="glass-card rounded-2xl p-6 bento-highlight">
+                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2026 - Present</span>
+                        <h3 class="font-heading font-bold text-slate-900 text-base">Field Work Practice</h3>
+                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">Front-End, UI/UX, & Graphic Design</p>
+                        <p class="text-xs text-slate-500 leading-relaxed mt-3 font-medium">
+                            The research focuses on optimizing the performance of component-based user interfaces.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    
+    <section id="timeline" class="py-24 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
+                    Tech Stack
                 </h2>
                 <p class="mt-4 text-slate-500 text-base leading-relaxed font-medium">
-                    Pengelompokan kapabilitas teknis terstruktur dengan penekanan pada rekayasa front-end, alur data back-end, dan pemodelan antarmuka.
+                    A structured grouping of technical capabilities emphasizing front-end engineering, back-end data flows, and interface modeling.
                 </p>
             </div>
 
@@ -301,32 +390,30 @@
                 <?php
                     $frontendSkills = $skills->get('frontend', collect());
                 ?>
-                <div class="glass-card bento-highlight lg:col-span-2 rounded-3xl p-8 flex flex-col justify-between">
+                <div class="glass-card bento-highlight lg:row-span-2 rounded-3xl p-8 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-3.5 mb-4">
-                            <div class="w-11 h-11 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0 border border-blue-100">
+                            <div class="w-11 h-11 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 border border-indigo-100">
                                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="font-heading font-bold text-base text-slate-900 leading-tight">Pengembangan Front-End</h3>
-                                <p class="text-xs text-slate-400 mt-0.5">Mewujudkan desain presisi dan pengelolaan state adaptif.</p>
+                                <h3 class="font-heading font-bold text-base text-slate-900 leading-tight">Front-End Development</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Achieving precision design and adaptive state management.</p>
                             </div>
                         </div>
                         <p class="text-xs text-slate-500 leading-relaxed mb-6 font-medium">
-                            Mengintegrasikan arsitektur modular dengan optimasi pemuatan halaman yang berfokus pada pengalaman pengguna berskala besar.
+                            Integrating modular architecture with page-loading optimization focused on large-scale user experience.
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-auto">
+                    <!-- Card Skills -->
+                    <div class="flex flex-row flex-wrap gap-2 mt-auto">
                         <?php $__currentLoopData = $frontendSkills; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100/80 hover:border-slate-200/80 hover:bg-white transition-all duration-200">
-                                <div class="mt-1 w-2 h-2 rounded-full bg-blue-500 shrink-0"></div>
-                                <div class="min-w-0">
-                                    <h4 class="text-xs font-bold text-slate-900 leading-none truncate"><?php echo e($sk->name); ?></h4>
-                                    <span class="text-[10px] text-slate-400 mt-1 block leading-none font-semibold"><?php echo e($sk->capability_tag); ?></span>
-                                </div>
+                            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
+                                    <?php echo e($sk->name); ?>
+
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
@@ -345,23 +432,21 @@
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="font-heading font-bold text-base text-slate-900 leading-tight">Infrastruktur Back-End</h3>
-                                <p class="text-xs text-slate-400 mt-0.5">Optimasi pipa data relasional dan pengembangan API logis.</p>
+                                <h3 class="font-heading font-bold text-base text-slate-900 leading-tight">Back-End Infrastructure</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Relational data pipeline optimization and logical API development.</p>
                             </div>
                         </div>
                         <p class="text-xs text-slate-500 leading-relaxed mb-6 font-medium">
-                            Membangun lapisan logika bisnis kokoh didukung pemodelan kueri terindeks secara optimal untuk efisiensi komputasi server.
+                            Building a robust business logic layer supported by optimally indexed query modeling for server computational efficiency.
                         </p>
                     </div>
 
-                    <div class="flex flex-col gap-3.5 mt-auto">
+                    <!-- Card Skills -->
+                    <div class="flex flex-row flex-wrap gap-2 mt-auto">
                         <?php $__currentLoopData = $backendSkills; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100/80 hover:border-slate-200/80 hover:bg-white transition-all duration-200">
-                                <div class="mt-1 w-2 h-2 rounded-full bg-indigo-500 shrink-0"></div>
-                                <div class="min-w-0">
-                                    <h4 class="text-xs font-bold text-slate-900 leading-none truncate"><?php echo e($sk->name); ?></h4>
-                                    <span class="text-[10px] text-slate-400 mt-1 block leading-none font-semibold"><?php echo e($sk->capability_tag); ?></span>
-                                </div>
+                            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
+                                    <?php echo e($sk->name); ?>
+
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
@@ -371,32 +456,30 @@
                 <?php
                     $designSkills = $skills->get('design_tools', collect());
                 ?>
-                <div class="glass-card bento-highlight lg:col-span-2 rounded-3xl p-8 flex flex-col justify-between">
+                <div class="glass-card bento-highlight lg:row-span-2 rounded-3xl p-8 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-3.5 mb-4">
-                            <div class="w-11 h-11 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center flex-shrink-0 border border-pink-100">
+                            <div class="w-11 h-11 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 border border-indigo-100">
                                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="font-heading font-bold text-base text-slate-900 leading-tight">Desain & Alat Kolaborasi</h3>
-                                <p class="text-xs text-slate-400 mt-0.5">Pembuatan cetak biru digital interaktif dan alur kontrol versi.</p>
+                                <h3 class="font-heading font-bold text-base text-slate-900 leading-tight">Design & Collaboration Tools</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Creation of interactive digital blueprints and version control workflows.</p>
                             </div>
                         </div>
                         <p class="text-xs text-slate-500 leading-relaxed mb-6 font-medium">
-                            Merancang kerangka desain modular berbasis komponen pada Figma, diiringi integrasi alur pengembangan Git terstruktur.
+                            Designing a component-based modular design framework in Figma, accompanied by the integration of a structured Git development workflow.
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-auto">
+                    <!-- Card Skills -->
+                    <div class="flex flex-row flex-wrap gap-2 mt-auto">
                         <?php $__currentLoopData = $designSkills; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-50 border border-slate-100/80 hover:border-slate-200/80 hover:bg-white transition-all duration-200">
-                                <div class="mt-1 w-2 h-2 rounded-full bg-pink-500 shrink-0"></div>
-                                <div class="min-w-0">
-                                    <h4 class="text-xs font-bold text-slate-900 leading-none truncate"><?php echo e($sk->name); ?></h4>
-                                    <span class="text-[10px] text-slate-400 mt-1 block leading-none font-semibold"><?php echo e($sk->capability_tag); ?></span>
-                                </div>
+                            <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
+                                    <?php echo e($sk->name); ?>
+
                             </div>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
@@ -407,96 +490,17 @@
     </section>
 
     
-    <section id="timeline" class="py-24 transition-colors duration-300">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Linimasa</span>
-                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
-                    Alur Kerja & Rekam Jejak
-                </h2>
-                <p class="mt-4 text-slate-500 text-base font-medium">
-                    Jejak langkah pengasahan disiplin akademik, manajemen kepemimpinan organisasi, dan inovasi rekayasa perangkat lunak.
-                </p>
-            </div>
-
-            
-            <div class="relative border-l-2 border-slate-200/80 ml-4 md:ml-32 pl-8 space-y-12">
-                
-                
-                <div class="relative">
-                    
-                    <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
-                    
-                    
-                    <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
-                        2019 - 2022
-                    </span>
-                    
-                    <div class="glass-card rounded-2xl p-6">
-                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2019 - 2022</span>
-                        <h3 class="font-heading font-bold text-slate-900 text-base">SMAN 3 Taruna Angkasa Madiun</h3>
-                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">Pendidikan Disiplin & Administrasi Komunitas</p>
-                        <p class="text-xs text-slate-500 leading-relaxed mt-3 font-medium">
-                            Membentuk fondasi kedisiplinan yang kokoh melalui kurikulum semi-militer taruna. Berperan aktif dalam rekayasa jejaring internal alumni serta memimpin struktur tata kelola informasi media sosial untuk portal digital Antareksa.
-                        </p>
-                    </div>
-                </div>
-
-                
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
-                    
-                    <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
-                        2022 - Selesai
-                    </span>
-
-                    <div class="glass-card rounded-2xl p-6">
-                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2022 - Selesai</span>
-                        <h3 class="font-heading font-bold text-slate-900 text-base">Politeknik Negeri Malang</h3>
-                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">D4 Teknik Informatika - Rekayasa Perangkat Lunak</p>
-                        <p class="text-xs text-slate-500 leading-relaxed mt-3 font-medium">
-                            Mendalami teknik arsitektur perangkat lunak skala tinggi, optimalisasi database relasional, dan pola integrasi API terdistribusi. Menyeimbangkan rekayasa sistem dengan tata kelola kepemimpinan sebagai Wakil Ketua Dewan Perwakilan Mahasiswa (DPM).
-                        </p>
-                    </div>
-                </div>
-
-                
-                <div class="relative">
-                    <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
-                    
-                    <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
-                        Eksplorasi
-                    </span>
-
-                    <div class="glass-card rounded-2xl p-6">
-                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">Eksplorasi</span>
-                        <h3 class="font-heading font-bold text-slate-900 text-base">Eksplorasi Perangkat Lunak & Riset</h3>
-                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">Fokus Front-End, UI/UX, & Praktik Green Computing</p>
-                        <p class="text-xs text-slate-500 leading-relaxed mt-3 font-medium">
-                            Fokus riset terarah pada optimalisasi performa antarmuka pengguna berbasis komponen, efisiensi rendering sisi server, serta penghematan daya komputasi kueri server (Green Computing) pada sistem database pergudangan data OLAP.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    
     <section id="projects" class="py-24 bg-white border-t border-slate-200/80 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             
             <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Galeri Portofolio</span>
+                <!-- <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Galeri Portofolio</span> -->
                 <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
-                    Showcase Rekayasa Aplikasi
+                    Application Engineering Showcase
                 </h2>
                 <p class="mt-4 text-slate-500 text-base font-medium">
-                    Koleksi proyek pilihan yang mendemonstrasikan implementasi antarmuka adaptif, skalabilitas platform, dan integritas pengolahan data.
+                    A collection of selected projects demonstrating the implementation of adaptive interfaces, platform scalability, and data processing integrity.
                 </p>
             </div>
 
@@ -546,7 +550,7 @@
 
                                 <?php if($project->is_featured): ?>
                                     <span class="relative z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-bold bg-[#2563EB] text-white shadow-md uppercase tracking-wider">
-                                        ★ Unggulan
+                                        ★ Featured
                                     </span>
                                 <?php endif; ?>
                             </div>
@@ -579,11 +583,11 @@
                             <?php if($project->project_url): ?>
                                 <a href="<?php echo e($project->project_url); ?>" target="_blank"
                                     class="text-xs font-bold text-[#2563EB] hover:underline underline-offset-2">
-                                    Akses Demo →
+                                    <!-- Akses Demo → -->
                                 </a>
                             <?php else: ?>
                                 <span class="text-xs font-bold text-slate-400">
-                                    Akses Demo Internal
+                                    
                                 </span>
                             <?php endif; ?>
 
@@ -591,7 +595,7 @@
                                 <a href="<?php echo e($project->github_url); ?>" target="_blank"
                                     class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-[#2563EB] transition-colors duration-150">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
-                                    Repository GitHub
+                                    GitHub
                                 </a>
                             <?php endif; ?>
                         </div>
@@ -609,12 +613,11 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="text-center mb-14">
-                <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Hubungi Saya</span>
-                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
-                    Diskusikan Proyek Anda
+                <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 gradient-text">
+                    Get In Touch
                 </h2>
                 <p class="mt-4 text-slate-500 text-sm font-medium">
-                    Terbuka untuk kolaborasi perangkat lunak, proyek freelance, atau posisi magang. Tanggapan akan diberikan dalam kurun waktu 24 jam.
+                    Open to software collaborations, freelance projects, or internship positions.
                 </p>
             </div>
 
@@ -622,8 +625,8 @@
                 
                 <div class="md:col-span-2 bg-gradient-to-br from-[#2563EB] to-[#7C3AED] p-8 flex flex-col justify-between text-white shadow-xl shadow-blue-500/10">
                     <div>
-                        <h3 class="font-heading font-bold text-lg mb-2">Informasi Kontak</h3>
-                        <p class="text-blue-100 text-xs leading-relaxed mb-8">Hubungi melalui media komunikasi digital di bawah ini.</p>
+                        <h3 class="font-heading font-bold text-lg mb-2">Contact Information</h3>
+                        <p class="text-blue-100 text-xs leading-relaxed mb-8">Contact us via the digital communication channels below.</p>
 
                         <div class="space-y-4">
                             <a href="mailto:<?php echo e($profile->contact_email); ?>" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
@@ -648,10 +651,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2 pt-4 border-t border-white/10 mt-8">
+                    <!-- <div class="flex items-center gap-2 pt-4 border-t border-white/10 mt-8">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                         <span class="text-[10px] text-blue-100 font-bold tracking-wide uppercase">Aktif</span>
-                    </div>
+                    </div> -->
                 </div>
 
                 
@@ -701,10 +704,10 @@
                     &copy; <?php echo e(date('Y')); ?> <span class="font-semibold text-slate-600"><?php echo e($profile->name); ?></span>. Hak Cipta Dilindungi Undang-Undang.
                 </p>
                 <div class="flex items-center gap-6">
-                    <a href="#home"     class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Beranda</a>
-                    <a href="#skills"   class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Keahlian</a>
-                    <a href="#timeline" class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Alur Kerja</a>
-                    <a href="#projects" class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Portofolio</a>
+                    <a href="#home"     class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Home page</a>
+                    <a href="#skills"   class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Experience</a>
+                    <a href="#timeline" class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Tech Stack</a>
+                    <a href="#projects" class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Project</a>
                 </div>
             </div>
         </div>

@@ -27,7 +27,7 @@ class PortfolioController extends Controller
             ],
         ]);
 
-        $projects = Project::orderBy('is_featured', 'desc')->orderBy('created_at', 'desc')->get();
+        $projects = Project::all();
         
         // Group skills by category: frontend, backend, design_tools
         $skills = Skill::all()->groupBy('category');

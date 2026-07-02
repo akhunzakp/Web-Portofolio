@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
 
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -29,7 +29,7 @@
 <body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center p-4 transition-colors duration-300">
 
     <div class="w-full max-w-md bg-white dark:bg-slate-800 rounded-3xl border border-slate-200/50 dark:border-slate-700/50 shadow-2xl p-8 relative overflow-hidden">
-        {{-- Background gradients --}}
+        
         <div class="absolute -top-32 -left-32 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-32 -right-32 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -39,23 +39,25 @@
             <p class="text-sm text-slate-500 dark:text-slate-400 mt-1.5">Sign in to manage your portfolio architecture</p>
         </div>
 
-        @if(session('error'))
+        <?php if(session('error')): ?>
             <div class="mb-5 p-3.5 rounded-xl text-xs font-semibold bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 border border-rose-100 dark:border-rose-900/30">
-                {{ session('error') }}
-            </div>
-        @endif
+                <?php echo e(session('error')); ?>
 
-        @if($errors->has('login_error'))
+            </div>
+        <?php endif; ?>
+
+        <?php if($errors->has('login_error')): ?>
             <div class="mb-5 p-3.5 rounded-xl text-xs font-semibold bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 border border-rose-100 dark:border-rose-900/30">
-                {{ $errors->first('login_error') }}
-            </div>
-        @endif
+                <?php echo e($errors->first('login_error')); ?>
 
-        <form action="{{ route('admin.login') }}" method="POST" class="space-y-5 relative z-10">
-            @csrf
+            </div>
+        <?php endif; ?>
+
+        <form action="<?php echo e(route('admin.login')); ?>" method="POST" class="space-y-5 relative z-10">
+            <?php echo csrf_field(); ?>
             <div>
                 <label for="username" class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wider">Username</label>
-                <input type="text" id="username" name="username" required value="{{ old('username') }}" placeholder="admin"
+                <input type="text" id="username" name="username" required value="<?php echo e(old('username')); ?>" placeholder="admin"
                     class="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400 outline-none transition-all duration-200">
             </div>
 
@@ -72,7 +74,7 @@
         </form>
 
         <div class="mt-8 text-center relative z-10">
-            <a href="{{ url('/') }}" class="text-xs font-semibold text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+            <a href="<?php echo e(url('/')); ?>" class="text-xs font-semibold text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
                 Public Website
             </a>
         </div>
@@ -80,3 +82,4 @@
 
 </body>
 </html>
+<?php /**PATH C:\Magang\resources\views/admin/login.blade.php ENDPATH**/ ?>
