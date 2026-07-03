@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ $profile->name }} | {{ $profile->title }}</title>
-    <meta name="description" content="Portofolio Profesional {{ $profile->name }} — {{ $profile->title }}. Fokus pada integrasi estetika UI/UX dan keandalan sistem.">
+    <title><?php echo e($profile->name); ?> | <?php echo e($profile->title); ?></title>
+    <meta name="description" content="Portofolio Profesional <?php echo e($profile->name); ?> — <?php echo e($profile->title); ?>. Fokus pada integrasi estetika UI/UX dan keandalan sistem.">
 
-    {{-- Google Fonts: Poppins (Headings) + Inter (Body) --}}
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
 
     <style>
         :root {
@@ -112,29 +112,28 @@
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased relative min-h-screen overflow-x-hidden grid-pattern">
 
-    {{-- Glowing Blob Elements --}}
+    
     <div class="floating-shape w-[600px] h-[600px] bg-blue-500/10 top-[-150px] left-[-200px]"></div>
     <div class="floating-shape w-[500px] h-[500px] bg-purple-500/8 bottom-[100px] right-[-150px]" style="animation-delay: -6s;"></div>
     <div class="floating-shape w-[400px] h-[400px] bg-indigo-500/5 top-[40%] left-[30%]" style="animation-delay: -3s;"></div>
 
-    {{-- ================================================================
-         STICKY GLASSMORPHIC NAVIGATION BAR
-    ================================================================ --}}
+    
     <header id="navbar" class="sticky top-0 z-50 backdrop-blur-lg bg-white/80 border-b border-slate-200/60 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
 
-                {{-- Branding --}}
+                
                 <a href="#home" class="flex items-center gap-2.5 group relative z-10">
                     <!-- <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white font-heading font-extrabold text-base shadow-md group-hover:scale-105 transition-transform duration-300">
-                        {{ mb_substr($profile->name, 0, 1) }}
+                        <?php echo e(mb_substr($profile->name, 0, 1)); ?>
+
                     </span> -->
                     <span class="text-lg font-heading font-bold text-slate-900 tracking-tight">
                         UI/UX & Visual Designer <span class="text-[#2563EB]">Enthusiast</span>
                     </span>
                 </a>
 
-                {{-- Menus --}}
+                
                 <nav class="hidden md:flex items-center gap-8">
                     <a href="#home"     class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Home page</a>
                     <a href="#skills"   class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Experience</a>
@@ -142,23 +141,23 @@
                     <a href="#projects" class="nav-link text-sm font-semibold text-slate-600 hover:text-[#2563EB] transition-colors duration-200">Project</a>
                 </nav>
 
-                {{-- Actions --}}
+                
                 <div class="flex items-center gap-4 relative z-10">
-                    {{-- Social Links --}}
-                    @if(!empty($profile->social_links['linkedin']))
-                        <a href="{{ $profile->social_links['linkedin'] }}" target="_blank" class="text-slate-400 hover:text-[#2563EB] transition-colors duration-200" title="LinkedIn">
+                    
+                    <?php if(!empty($profile->social_links['linkedin'])): ?>
+                        <a href="<?php echo e($profile->social_links['linkedin']); ?>" target="_blank" class="text-slate-400 hover:text-[#2563EB] transition-colors duration-200" title="LinkedIn">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
-                    @endif
+                    <?php endif; ?>
 
                     <div class="w-px h-4 bg-slate-200"></div>
 
-                    {{-- Admin Dashboard shortcut --}}
-                    <a href="{{ url('/admin') }}" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600 transition-colors">
+                    
+                    <a href="<?php echo e(url('/admin')); ?>" class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-100 text-slate-600 transition-colors">
                         Setting
                     </a>
 
-                    {{-- Mobile menu trigger --}}
+                    
                     <button id="mobile-menu-btn" aria-label="Buka menu"
                         class="flex md:hidden items-center justify-center w-10 h-10 rounded-xl bg-slate-100 text-slate-500 hover:bg-slate-200 transition-colors duration-200">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -169,7 +168,7 @@
             </div>
         </div>
 
-        {{-- Mobile dropdown menu --}}
+        
         <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200/50 bg-white/95 backdrop-blur-md">
             <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1.5">
                 <a href="#home"     class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()">Home page</a>
@@ -180,16 +179,14 @@
         </div>
     </header>
 
-    {{-- ================================================================
-         HERO SECTION
-    ================================================================ --}}
+    
     <section id="home" class="relative overflow-hidden py-24 lg:py-36">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-12 gap-16 items-center">
 
-                {{-- Left: Description copy --}}
+                
                 <div class="lg:col-span-7 text-center lg:text-left">
-                    {{-- Glowing Leadership pill --}}
+                    
                     <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-8">
                         <!-- <span class="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span> -->
                         <span class="text-xs font-bold text-[#2563EB] tracking-wide font-heading">
@@ -197,36 +194,37 @@
                         </span>
                     </div>
 
-                    {{-- Main dynamic heading --}}
+                    
                     <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-6">
                         <span class="gradient-text">Hi, I'm</span> Putra<br>
                         I Build Thing for the Web
 
                     </h1>
 
-                    {{-- Bio description --}}
+                    
                     <p class="text-base sm:text-lg text-slate-500 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 font-medium">
-                        {{ $profile->bio }}
+                        <?php echo e($profile->bio); ?>
+
                     </p>
 
-                    {{-- Buttons CTAs --}}
+                    
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
 
-                        <a href="mailto:{{ $profile->contact_email }}?subject=Tanya%20Projek%20Portofolio"
+                        <a href="mailto:<?php echo e($profile->contact_email); ?>?subject=Tanya%20Projek%20Portofolio"
                             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-[#2563EB] bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
                             <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
                             Contact me
                         </a>
-                        <!-- <a href="mailto:{{ $profile->contact_email }}"
+                        <!-- <a href="mailto:<?php echo e($profile->contact_email); ?>"
                             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-[#2563EB] bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
                             <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                             </svg>
                             Contact me
                         </a> -->
-                        <a href="{{ asset('files/CV Yuma Akhunza.pdf') }}" download="CV_Yuma_Akhunza.pdf"
+                        <a href="<?php echo e(asset('files/CV Yuma Akhunza.pdf')); ?>" download="CV_Yuma_Akhunza.pdf"
                             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-lg shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0">
                                 
                                 <svg class="w-4.5 h-4.5 transition-transform duration-200 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -244,27 +242,30 @@
                     </div>
                 </div>
 
-                {{-- Right: Profile Bento box shape --}}
+                
                 <div class="lg:col-span-5 flex justify-center">
                     <div class="relative w-80 h-80 sm:w-96 sm:h-96">
-                        {{-- Drop shadows glow --}}
+                        
                         <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#2563EB] to-[#7C3AED] rotate-6 opacity-15 blur-2xl animate-pulse"></div>
                         <div class="absolute inset-0 rounded-3xl bg-gradient-to-bl from-blue-400 to-indigo-600 -rotate-3 opacity-10 blur-lg"></div>
 
-                        {{-- Bento profile --}}
+                        
                         <div class="relative w-full h-full bg-white rounded-3xl border border-slate-200 shadow-2xl p-8 flex flex-col justify-between overflow-hidden">
                             <div class="flex justify-between items-start">
                                 <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white font-heading font-extrabold text-3xl shadow-lg shadow-blue-500/20">
-                                    {{ mb_substr($profile->name, 0, 1) }}
+                                    <?php echo e(mb_substr($profile->name, 0, 1)); ?>
+
                                 </div>
                             </div>
 
                             <div>
                                 <h3 class="font-heading font-bold text-xl text-slate-900 leading-tight">
-                                    {{ $profile->name }}
+                                    <?php echo e($profile->name); ?>
+
                                 </h3>
                                 <p class="text-xs font-semibold text-[#2563EB] mt-1 uppercase tracking-wider">
-                                    {{ $profile->title }}
+                                    <?php echo e($profile->title); ?>
+
                                 </p>
                                 <p class="text-xs text-slate-400 mt-2 font-medium">
                                     Politeknik Negeri Malang
@@ -285,15 +286,13 @@
         </div>
     </section>
 
-    {{-- ================================================================
-         WORKFLOW & TIMELINE SECTION
-    ================================================================ --}}
+    
     <section id="skills" class="py-24 bg-white border-y border-slate-200/80 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
 
 
-            {{-- Section titles --}}
+            
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <!-- <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Linimasa</span> -->
                 <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
@@ -303,15 +302,15 @@
                     A journey marked by the honing of academic discipline, organizational leadership management, and software engineering innovation.                </p>
             </div>
 
-            {{-- Timeline steps --}}
+            
             <div class="relative border-l-2 border-slate-200/80 ml-4 md:ml-32 pl-8 space-y-12">
                 
-                {{-- Timeline Step 1 --}}
+                
                 <div class="relative">
-                    {{-- Blue indicator --}}
+                    
                     <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
                     
-                    {{-- Side label for date --}}
+                    
                     <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
                         2019 - 2022
                     </span>
@@ -327,7 +326,7 @@
                     </div>
                 </div>
 
-                {{-- Timeline Step 2 --}}
+                
                 <div class="relative">
                     <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
                     
@@ -346,7 +345,7 @@
                     </div>
                 </div>
 
-                {{-- Timeline Step 3 --}}
+                
                 <div class="relative">
                     <div class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full bg-white border-4 border-[#2563EB] shadow-md z-10"></div>
                     
@@ -369,13 +368,11 @@
         </div>
     </section>
 
-    {{-- ================================================================
-         SKILLS MATRIKS BENTO GRID
-    ================================================================ --}}
+    
     <section id="timeline" class="py-24 transition-colors duration-300">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {{-- Title headers --}}
+            
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
                     Tech Stack
@@ -385,13 +382,13 @@
                 </p>
             </div>
 
-            {{-- Asymmetric Bento layout --}}
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                {{-- Box 1: Frontend (Wide) --}}
-                @php
+                
+                <?php
                     $frontendSkills = $skills->get('frontend', collect());
-                @endphp
+                ?>
                 <div class="glass-card bento-highlight lg:row-span-2 rounded-3xl p-8 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-3.5 mb-4">
@@ -412,18 +409,19 @@
 
                     <!-- Card Skills -->
                     <div class="flex flex-row flex-wrap gap-2 mt-auto">
-                        @foreach($frontendSkills as $sk)
+                        <?php $__currentLoopData = $frontendSkills; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">  
-                                {{ $sk->name }}
+                                <?php echo e($sk->name); ?>
+
                             </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 
-                {{-- Box 2: Backend (Tall) --}}
-                @php
+                
+                <?php
                     $backendSkills = $skills->get('backend', collect());
-                @endphp
+                ?>
                 <div class="glass-card bento-highlight lg:row-span-2 rounded-3xl p-8 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-3.5 mb-4">
@@ -444,17 +442,18 @@
 
                     <!-- Card Skills -->
                     <div class="flex flex-row flex-wrap gap-2 mt-auto">
-                        @foreach($backendSkills as $sk)
-                        <div class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">                                     {{ $sk->name }}
+                        <?php $__currentLoopData = $backendSkills; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">                                     <?php echo e($sk->name); ?>
+
                             </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 
-                {{-- Box 3: Design Tools (Wide Bottom) --}}
-                @php
+                
+                <?php
                     $designSkills = $skills->get('design_tools', collect());
-                @endphp
+                ?>
                 <div class="glass-card bento-highlight lg:row-span-2 rounded-3xl p-8 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center gap-3.5 mb-4">
@@ -475,10 +474,11 @@
 
                     <!-- Card Skills -->
                     <div class="flex flex-row flex-wrap gap-2 mt-auto">
-                        @foreach($designSkills as $sk)
-                        <div class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">                                      {{ $sk->name }}
+                        <?php $__currentLoopData = $designSkills; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sk): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">                                      <?php echo e($sk->name); ?>
+
                             </div>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </div>
 
@@ -486,13 +486,11 @@
         </div>
     </section>
 
-    {{-- ================================================================
-         GALERI PORTOFOLIO BENTO GRID SHOWCASE
-    ================================================================ --}}
+    
     <section id="projects" class="py-24 bg-white border-t border-slate-200/80 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {{-- Section Title --}}
+            
             <div class="text-center max-w-2xl mx-auto mb-16">
                 <!-- <span class="inline-block text-xs font-bold tracking-[0.15em] uppercase text-[#2563EB] mb-3">Galeri Portofolio</span> -->
                 <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900">
@@ -503,10 +501,10 @@
                 </p>
             </div>
 
-            {{-- Bento Box Projects --}}
+            
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                @forelse($projects as $index => $project)
-                    @php
+                <?php $__empty_1 = true; $__currentLoopData = $projects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $project): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <?php
                         // Asymmetric Grid Bento Box layout logic for 3 elements:
                         // Project 1 (Fruityfy): col-span-1
                         // Project 2 (Antareksa): col-span-1
@@ -530,83 +528,84 @@
                             $accent = 'from-amber-500 to-orange-600';
                             $iconPath = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>';
                         }
-                    @endphp
+                    ?>
 
-                    <div class="glass-card {{ $span }} rounded-3xl overflow-hidden flex flex-col justify-between bg-white border border-slate-200">
+                    <div class="glass-card <?php echo e($span); ?> rounded-3xl overflow-hidden flex flex-col justify-between bg-white border border-slate-200">
                         <div>
-                            {{-- Visual Header Banner --}}
+                            
                             <div class="relative h-48 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex flex-col items-center justify-center gap-3">
                                 <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(0deg, #fff 0px, #fff 1px, transparent 1px, transparent 40px), repeating-linear-gradient(90deg, #fff 0px, #fff 1px, transparent 1px, transparent 40px);"></div>
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
 
-                                @if($project->image_path)
-                                    <img src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->title }}" class="absolute inset-0 w-full h-full object-cover opacity-20">
-                                @endif
+                                <?php if($project->image_path): ?>
+                                    <img src="<?php echo e(asset('storage/' . $project->image_path)); ?>" alt="<?php echo e($project->title); ?>" class="absolute inset-0 w-full h-full object-cover opacity-20">
+                                <?php endif; ?>
 
-                                <div class="relative z-10 w-11 h-11 rounded-2xl bg-gradient-to-br {{ $accent }} flex items-center justify-center shadow-lg shadow-black/10">
-                                    <svg class="w-5.5 h-5.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">{!! $iconPath !!}</svg>
+                                <div class="relative z-10 w-11 h-11 rounded-2xl bg-gradient-to-br <?php echo e($accent); ?> flex items-center justify-center shadow-lg shadow-black/10">
+                                    <svg class="w-5.5 h-5.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><?php echo $iconPath; ?></svg>
                                 </div>
 
-                                @if($project->is_featured)
+                                <?php if($project->is_featured): ?>
                                     <span class="relative z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[9px] font-bold bg-[#2563EB] text-white shadow-md uppercase tracking-wider">
                                         ★ Featured
                                     </span>
-                                @endif
+                                <?php endif; ?>
                             </div>
 
-                            {{-- Project Meta and Body --}}
+                            
                             <div class="p-8">
                                 <div class="flex flex-wrap gap-1.5 mb-4">
-                                    @foreach($project->tech_stack ?? [] as $t) 
+                                    <?php $__currentLoopData = $project->tech_stack ?? []; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $t): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">
-                                            {{ $t }}
+                                            <?php echo e($t); ?>
+
                                         </span>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </div>
 
                                 <h3 class="font-heading font-bold text-lg text-slate-900 mb-2 leading-tight">
-                                    {{ $project->title }}
+                                    <?php echo e($project->title); ?>
+
                                 </h3>
 
                                 <p class="text-xs text-slate-500 leading-relaxed font-medium">
-                                    {{ $project->description }}
+                                    <?php echo e($project->description); ?>
+
                                 </p>
                             </div>
                         </div>
 
-                        {{-- Footer Link --}}
+                        
                         <div class="px-8 pb-8 pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
-                            @if($project->project_url)
-                                <a href="{{ $project->project_url }}" target="_blank"
+                            <?php if($project->project_url): ?>
+                                <a href="<?php echo e($project->project_url); ?>" target="_blank"
                                     class="text-xs font-bold text-[#2563EB] hover:underline underline-offset-2">
                                     Akses Demo
                                 </a>
-                            @else
+                            <?php else: ?>
                                 <span class="text-xs font-bold text-slate-400">
                                     
                                 </span>
-                            @endif
+                            <?php endif; ?>
 
-                            @if($project->github_url)
-                                <a href="{{ $project->github_url }}" target="_blank"
+                            <?php if($project->github_url): ?>
+                                <a href="<?php echo e($project->github_url); ?>" target="_blank"
                                     class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-[#2563EB] transition-colors duration-150">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
                                     GitHub
                                 </a>
-                            @endif
+                            <?php endif; ?>
                         </div>
                     </div>
-                @empty
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
                     <p class="col-span-full text-center text-slate-400 italic py-12">Tidak ada proyek yang ditemukan.</p>
-                @endforelse
+                <?php endif; ?>
             </div>
 
         </div>
     </section>
 
-    {{-- ================================================================
-         CONTACT SECTION
-    ================================================================ --}}
+    
     <section id="contact" class="py-24 bg-slate-50 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -620,22 +619,22 @@
             </div>
 
             <div class="glass-card rounded-3xl overflow-hidden md:grid md:grid-cols-5 bg-white border border-slate-200">
-                {{-- Left panel --}}
+                
                 <div class="md:col-span-2 bg-gradient-to-br from-[#2563EB] to-[#7C3AED] p-8 flex flex-col justify-between text-white shadow-xl shadow-blue-500/10">
                     <div>
                         <h3 class="font-heading font-bold text-lg mb-2">Contact Information</h3>
                         <p class="text-blue-100 text-xs leading-relaxed mb-8">Contact us via the digital communication channels below.</p>
 
                         <div class="space-y-4">
-                            <a href="mailto:{{ $profile->contact_email }}" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
+                            <a href="mailto:<?php echo e($profile->contact_email); ?>" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
                                 <span class="w-8.5 h-8.5 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors shrink-0">
                                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                                 </span>
-                                <span class="truncate font-semibold">{{ $profile->contact_email }}</span>
+                                <span class="truncate font-semibold"><?php echo e($profile->contact_email); ?></span>
                             </a>
 
-                            @if(!empty($profile->social_links['instagram']))
-                                <a href="{{ $profile->social_links['instagram'] }}" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
+                            <?php if(!empty($profile->social_links['instagram'])): ?>
+                                <a href="<?php echo e($profile->social_links['instagram']); ?>" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
                                     <span class="w-8 h-8 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors shrink-0">
                                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -643,15 +642,15 @@
                                     </span>
                                     <span class="font-semibold">akhunza.kp</span>
                                 </a>
-                            @endif
-                            @if(!empty($profile->social_links['github']))
-                                <a href="{{ $profile->social_links['github'] }}" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
+                            <?php endif; ?>
+                            <?php if(!empty($profile->social_links['github'])): ?>
+                                <a href="<?php echo e($profile->social_links['github']); ?>" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
                                     <span class="w-8.5 h-8.5 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors shrink-0">
                                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
                                     </span>
                                     <span class="font-semibold">github.com/akhunzakp</span>
                                 </a>
-                            @endif
+                            <?php endif; ?>
 
                             <a href="https://maps.app.goo.gl/NdFKTGZJx1uSRAPcA" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-colors text-xs group">
                                 <span class="w-8.5 h-8.5 rounded-xl bg-white/10 group-hover:bg-white/20 flex items-center justify-center transition-colors shrink-0">
@@ -668,7 +667,7 @@
                     </div> -->
                 </div>
 
-                {{-- Right Panel Form --}}
+                
                 <div class="md:col-span-3 p-8">
                     <form onsubmit="event.preventDefault(); alert('Pesan Anda berhasil dikirim. Terima kasih!');" class="space-y-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -704,14 +703,12 @@
         </div>
     </section>
 
-    {{-- ================================================================
-         FOOTER
-    ================================================================ --}}
+    
     <footer class="bg-white border-t border-slate-200/80 py-10 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
                 <p class="text-xs text-slate-400 font-medium">
-                    &copy; {{ date('Y') }} <span class="font-semibold text-slate-600">{{ $profile->name }}</span>. Hak Cipta Dilindungi Undang-Undang.
+                    &copy; <?php echo e(date('Y')); ?> <span class="font-semibold text-slate-600"><?php echo e($profile->name); ?></span>. Hak Cipta Dilindungi Undang-Undang.
                 </p>
                 <div class="flex items-center gap-6">
                     <a href="#home"     class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Home page</a>
@@ -723,9 +720,7 @@
         </div>
     </footer>
 
-    {{-- ================================================================
-         JAVASCRIPT — Mobile Menu + Bento Mouse Coordinate Glow Effect
-    ================================================================ --}}
+    
     <script>
         // --- Mobile Menu Toggle ---
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -782,3 +777,4 @@
 
 </body>
 </html>
+<?php /**PATH /home/server/Reka/Orientasi-Magang/Putra/Web-Portofolio/resources/views/index.blade.php ENDPATH**/ ?>
