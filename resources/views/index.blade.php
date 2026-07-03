@@ -262,10 +262,6 @@
                                 <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white font-heading font-extrabold text-3xl shadow-lg shadow-blue-500/20">
                                     {{ mb_substr($profile->name, 0, 1) }}
                                 </div>
-                                <!-- <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    Tersedia
-                                </span>  -->
                             </div>
 
                             <div>
@@ -361,12 +357,12 @@
                     
                     <span class="hidden md:block absolute -left-32 top-2.0 text-xs font-bold text-slate-400 tracking-wider text-right w-20 uppercase">
                         2026 - Present
-                    </span>
+                    </span> 
 
                     <div class="glass-card rounded-2xl p-6 bento-highlight">
                         <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2026 - Present</span>
-                        <h3 class="font-heading font-bold text-slate-900 text-base">Field Work Practice</h3>
-                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">Front-End, UI/UX, & Graphic Design</p>
+                        <h3 class="font-heading font-bold text-slate-900 text-base">PT. Rekaindo Global Jasa</h3>
+                        <p class="text-xs font-semibold text-[#2563EB] mt-0.5">Field Work Practice</p>
                         <p class="text-xs text-slate-500 leading-relaxed mt-3 font-medium">
                             The research focuses on optimizing the performance of component-based user interfaces.
                         </p>
@@ -590,7 +586,7 @@
                             @if($project->project_url)
                                 <a href="{{ $project->project_url }}" target="_blank"
                                     class="text-xs font-bold text-[#2563EB] hover:underline underline-offset-2">
-                                    Akses Demo →
+                                    Akses Demo
                                 </a>
                             @else
                                 <span class="text-xs font-bold text-slate-400">

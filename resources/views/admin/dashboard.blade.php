@@ -105,12 +105,30 @@
                                 class="w-full px-4 py-2.5 rounded-xl text-sm bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400 outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wide">Avatar / Photo</label>
+                            <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5 uppercase tracking-wide">Photo Profile</label>
                             <input type="file" name="photo"
                                 class="w-full px-4 py-2.0 rounded-xl text-sm bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 dark:focus:border-blue-400 outline-none">
+                            
+                            @error('photo')
+                                <p class="text-red-500 text-xs mt-1 font-semibold">{{ $message }}</p>
+                            @enderror
+                            
+
                             @if($profile->photo_path)
-                                <div class="mt-2 text-xs text-slate-400">Current photo: <span class="font-mono text-[10px]">{{ $profile->photo_path }}</span></div>
+                                <div class="mt-4 p-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 inline-block">
+                                    <p class="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-2">Current Photo Preview</p>
+                                    
+                                    <img src="{{ asset('storage/' . $profile->photo_path) }}" 
+                                        alt="Current Profile Photo" 
+                                        class="h-20 w-20 object-cover rounded-lg shadow-sm mb-2">
+                                        
+                                    <div class="text-xs text-slate-400">Path: <span class="font-mono text-[10px]">{{ $profile->photo_path }}</span></div>
+                                </div>
                             @endif
+
+                            <!-- @if($profile->photo_path)
+                                <div class="mt-2 text-xs text-slate-400">Current photo: <span class="font-mono text-[10px]">{{ $profile->photo_path }}</span></div>
+                            @endif --> 
                         </div>
                     </div>
 
@@ -135,11 +153,11 @@
                         </div>
                     </div>
                     <div class="flex gap-2 pt-2">        
-                    <button type="submit"
-                        class="px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors">
-                        Submit
-                    </button>
-    </div>
+                        <button type="submit"
+                            class="px-6 py-2.5 rounded-xl text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors">
+                            Submit
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

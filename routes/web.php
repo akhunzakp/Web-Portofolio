@@ -1,4 +1,4 @@
-    <?php
+<?php
 
     use App\Http\Controllers\PortfolioController;
     use App\Http\Controllers\AdminController;
