@@ -32,8 +32,8 @@ class AdminController extends Controller
             'password' => 'required|string',
         ]);
 
-        $envUsername = env('ADMIN_USERNAME', 'admin');
-        $envPassword = env('ADMIN_PASSWORD', 'admin');
+        $envUsername = env('ADMIN_USERNAME', '18182003');
+        $envPassword = env('ADMIN_PASSWORD', '18182003');
 
         if ($credentials['username'] === $envUsername && $credentials['password'] === $envPassword) {
             session(['admin_logged_in' => true]);

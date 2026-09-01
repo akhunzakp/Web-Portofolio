@@ -329,7 +329,7 @@
                     </h1>
 
                     {{-- Bio description --}}
-                    <p class="text-base sm:text-lg text-slate-500 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 font-medium">
+                    <p class="text-sm sm:text-base text-slate-500 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0 font-medium">
                         {{ $profile->bio }}
                     </p>
 
@@ -576,16 +576,21 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             @php
                 $techStacks = [
-                    ['name' => 'Laravel',   'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg'],
-                    ['name' => 'PHP',       'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg'],
-                    ['name' => 'Tailwind',  'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg'],
-                    ['name' => 'Bootstrap', 'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg'],
-                    ['name' => 'MySQL',     'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg'],
-                    ['name' => 'Figma',     'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg'],
-                    ['name' => 'REST API',  'icon' => 'https://api.iconify.design/tabler:api.svg?color=%232563eb'],
-                    ['name' => 'Git',       'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg'],
-                    ['name' => 'GitHub',    'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'],
-                    ['name' => 'Canva',     'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg'],
+                    ['name' => 'Laravel',    'icon' => 'https://cdn.simpleicons.org/laravel/FF2D20'],
+                    ['name' => 'Next.Js',    'icon' => 'https://cdn.simpleicons.org/nextdotjs/white'],
+                    ['name' => 'Flutter',    'icon' => 'https://cdn.simpleicons.org/flutter/02569B'],
+                    ['name' => 'JavaScript', 'icon' => 'https://cdn.simpleicons.org/javascript/F7DF1E'],
+                    ['name' => 'PHP',        'icon' => 'https://cdn.simpleicons.org/php/777BB4'],
+                    ['name' => 'Tailwind',   'icon' => 'https://cdn.simpleicons.org/tailwindcss/06B6D4'],
+                    ['name' => 'Bootstrap',  'icon' => 'https://cdn.simpleicons.org/bootstrap/7952B3'],
+                    ['name' => 'MySQL',      'icon' => 'https://cdn.simpleicons.org/mysql/4479A1'],
+                    ['name' => 'REST API',   'icon' => 'https://cdn.simpleicons.org/postman/FF6C37'],
+                    ['name' => 'Git',        'icon' => 'https://cdn.simpleicons.org/git/F05032'],
+                    ['name' => 'GitHub',     'icon' => 'https://cdn.simpleicons.org/github/white'],
+                    ['name' => 'Figma',      'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg'],
+                    ['name' => 'Canva',      'icon' => 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg'],
+                    ['name' => 'CorelDraw',  'icon' => 'https://cdn.simpleicons.org/coreldraw/40B233'],
+                    ['name' => 'CapCut',     'icon' => 'https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/capcut/default.svg'],
                 ];
             @endphp
             
@@ -619,7 +624,7 @@
                             class="relative z-10 w-10 h-10 sm:w-12 sm:h-12 object-contain opacity-65 group-hover:opacity-100 scale-100 group-hover:scale-125 group-hover:-translate-y-2.5 transition-all duration-300 ease-out drop-shadow-sm group-hover:drop-shadow-[0_10px_20px_rgba(37,99,235,0.45)]">
 
                         {{-- Penyesuaian Font Size & Color --}}
-                        <span class="relative z-10 mt-3 text-sm sm:text-xs font-medium text-slate-400 group-hover:text-white group-hover:font-semibold transition-all duration-300 tracking-wider whitespace-nowrap">
+                        <span class="relative z-10 mt-3 text-xs sm:text-xs font-normal text-slate-400 group-hover:text-white group-hover:font-semibold transition-all duration-300 tracking-wider whitespace-nowrap">
                             {{ $tech['name'] }}
                         </span>
                     </div>
@@ -647,7 +652,9 @@
                     {{-- Icon --}}
                     <div class="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md text-indigo-600 flex items-center justify-center border border-indigo-100/80 mb-4 z-10 shadow-md group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a2 2 0 012-2h12a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 9h16" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 9v11" />
                         </svg>
                     </div>
                     
@@ -692,9 +699,9 @@
 
                     {{-- Icon --}}
                     <div class="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md text-indigo-600 flex items-center justify-center border border-indigo-100/80 mb-4 z-10 shadow-md group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582-4 8-4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s-8-1.79-8-4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/>
-                        </svg>
+<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+</svg>
                     </div>
                 </div>
 
@@ -738,7 +745,7 @@
                     {{-- Icon --}}
                     <div class="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md text-indigo-600 flex items-center justify-center border border-indigo-100/80 mb-4 z-10 shadow-md group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                         </svg>
                     </div>
                 </div>
@@ -919,7 +926,7 @@
                 <div class="absolute -bottom-20 -right-20 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 {{-- Left panel - Solid Blue, no gradient --}}
-                <div class="md:col-span-2 bg-[#2563EB] p-8 sm:p-10 flex flex-col justify-between text-white shadow-xl shadow-blue-600/20 reveal-on-scroll reveal-left delay-100 relative overflow-hidden">
+                <div class="md:col-span-2 bg-[#2563EB] p-8 sm:p-10 flex flex-col justify-between text-white shadow-xl shadow-blue-600/20 reveal-on-scroll reveal-left delay-100 relative overflow-hidden bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-md shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 ">
                     {{-- Inner Glass Blob Glow for Left Panel --}}
                     <div class="absolute -top-10 -right-10 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
                     <div class="absolute -bottom-10 -left-10 w-28 h-28 bg-white/5 rounded-full blur-xl pointer-events-none"></div>
