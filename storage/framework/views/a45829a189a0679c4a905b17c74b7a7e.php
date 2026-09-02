@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -8,13 +9,20 @@
     <meta name="description" content="Portofolio Profesional <?php echo e($profile->name); ?> — <?php echo e($profile->title); ?>. Fokus pada integrasi estetika UI/UX dan keandalan sistem.">
 
     
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    
     <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
 
+    
     <style>
+        /* -----------------------------------------------------------------
+         * 3.1 CSS CUSTOM PROPERTIES & BASE TYPOGRAPHY
+         * Menentukan variabel font utama dan warna dasar latar belakang.
+         * ----------------------------------------------------------------- */
         :root {
             --font-heading: 'Poppins', system-ui, sans-serif;
             --font-body:    'Inter',   system-ui, sans-serif;
@@ -25,13 +33,19 @@
         }
         h1, h2, h3, h4, .font-heading { font-family: var(--font-heading); }
 
-        /* Smooth scrollbar */
+        /* -----------------------------------------------------------------
+         * 3.2 KUSTOM STYLING SCROLLBAR (WEBKIT)
+         * Mengatur tampilan bilah gulir agar selaras dengan tema biru.
+         * ----------------------------------------------------------------- */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track  { background: transparent; }
         ::-webkit-scrollbar-thumb  { background: #2563EB33; border-radius: 99px; }
         ::-webkit-scrollbar-thumb:hover { background: #2563EB55; }
 
-        /* Lenis Momentum Scroll CSS */
+        /* -----------------------------------------------------------------
+         * 3.3 STYLING KONTROL SMOOTH SCROLL (LENIS LIBRARY)
+         * Menangani perilaku scroll halus dan isolasi event scroll internal.
+         * ----------------------------------------------------------------- */
         html.lenis, html.lenis body {
             height: auto;
         }
@@ -48,22 +62,27 @@
             pointer-events: none;
         }
 
-        /* Top Scroll Progress Indicator */
+        /* -----------------------------------------------------------------
+         * 3.4 INDIKATOR PROGRES SCROLL ATAS (#scroll-progress)
+         * Bar indikator membaca sejauh mana pengguna menggulir halaman.
+         * ----------------------------------------------------------------- */
         #scroll-progress {
-            position: fixed;
-            top: 0;
+            position: absolute;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #2563EB 0%, #7C3AED 100%);
+            height: 2px;
+            background: linear-gradient(90deg, #2563EB 0%, #1b54cdff 100%);
             transform-origin: left;
             transform: scaleX(0);
-            z-index: 9999;
             pointer-events: none;
             transition: transform 0.1s cubic-bezier(0, 0, 0.2, 1);
         }
 
-        /* Modern Scroll Reveal Utilities */
+        /* -----------------------------------------------------------------
+         * 3.5 UTILITAS ANIMASI SCROLL REVEAL (INTERSECTION OBSERVER)
+         * Mengontrol transparansi dan pergerakan elemen saat muncul di viewport.
+         * ----------------------------------------------------------------- */
         .reveal-on-scroll {
             opacity: 0;
             will-change: opacity, transform;
@@ -87,14 +106,19 @@
             transform: translateY(0) translateX(0) scale(1);
         }
 
-        /* Stagger Delays */
+        /* -----------------------------------------------------------------
+         * 3.6 DELAY ANIMASI BERTINGKAT (STAGGER EFFECT)
+         * ----------------------------------------------------------------- */
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
         .delay-400 { transition-delay: 400ms; }
         .delay-500 { transition-delay: 500ms; }
 
-        /* Accessibility: Reduced Motion Fallback */
+        /* -----------------------------------------------------------------
+         * 3.7 AKSESIBILITAS (PREFERS REDUCED MOTION)
+         * Mematikan animasi jika pengguna mengaktifkan mode reduced-motion.
+         * ----------------------------------------------------------------- */
         @media (prefers-reduced-motion: reduce) {
             .reveal-on-scroll {
                 opacity: 1 !important;
@@ -107,7 +131,9 @@
             }
         }
 
-        /* Gradient text utility */
+        /* -----------------------------------------------------------------
+         * 3.8 UTILITAS VOKAL VISUAL (GRADIENT TEXT & GLASSMORPHISM)
+         * ----------------------------------------------------------------- */
         .gradient-text {
             background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
             -webkit-background-clip: text;
@@ -115,7 +141,6 @@
             background-clip: text;
         }
 
-        /* Glassmorphic Cards with Soft Drop Shadows */
         .glass-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
@@ -130,7 +155,9 @@
             border-color: rgba(37, 99, 235, 0.25);
         }
 
-        /* Floating background shapes */
+        /* -----------------------------------------------------------------
+         * 3.9 ELEMEN ORNAMEN LATAR BELAKANG (FLOATING BLOBS & KEYFRAMES)
+         * ----------------------------------------------------------------- */
         .floating-shape {
             position: absolute;
             border-radius: 50%;
@@ -144,7 +171,9 @@
             100% { transform: translateY(-50px) rotate(120deg) scale(1.15); }
         }
 
-        /* Nav link hover underline */
+        /* -----------------------------------------------------------------
+         * 3.10 INDIKATOR NAVIGASI (GARIS UNDERLINE HOVER NAVBAR)
+         * ----------------------------------------------------------------- */
         .nav-link {
             position: relative;
         }
@@ -162,7 +191,9 @@
         }   
         .nav-link:hover::after { width: 100%; }
 
-        /* Bento Grid Interactive Highlight Glow */
+        /* -----------------------------------------------------------------
+         * 3.11 EFEK INTERAKTIF BENTO GRID & POLA GRID
+         * ----------------------------------------------------------------- */
         .bento-highlight {
             position: relative;
             overflow: hidden;
@@ -181,7 +212,6 @@
             opacity: 1;
         }
 
-        /* Grid Pattern Overlay */
         .grid-pattern {
             background-size: 30px 30px;
             background-image: linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
@@ -189,10 +219,14 @@
         }
     </style>
 </head>
+
+
+
 <body class="bg-slate-50 text-slate-900 antialiased relative min-h-screen overflow-x-hidden grid-pattern">
 
     
-    <div id="scroll-progress" aria-hidden="true"></div>
+    <!-- 
+    <div id="scroll-progress" aria-hidden="true"></div> -->
 
     
     <div class="floating-shape w-[600px] h-[600px] bg-blue-500/10 top-[-150px] left-[-200px]"></div>
@@ -222,13 +256,13 @@
                 
                 <div class="flex items-center gap-4 relative z-10">
                     
-
                     <?php if(!empty($profile->social_links['linkedin'])): ?>
                         <a href="<?php echo e($profile->social_links['linkedin']); ?>" target="_blank" class="text-slate-400 hover:text-[#2563EB] transition-colors duration-200" title="LinkedIn">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         </a>
                     <?php endif; ?>
 
+                    
                     <div class="w-px h-4 bg-slate-200"></div>
 
                     
@@ -277,6 +311,7 @@
                 <a href="#timeline" class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()" data-lang-id="Kemampuan" data-lang-en="Tech Stack">Tech Stack</a>
                 <a href="#projects" class="px-3 py-2.5 rounded-xl text-sm font-semibold text-slate-600 hover:bg-slate-100 transition-all" onclick="closeMobileMenu()" data-lang-id="Proyek" data-lang-en="Project">Project</a>
 
+                
                 <div class="my-2.5 border-t border-slate-200/60 mx-3"></div>
 
                 
@@ -300,6 +335,11 @@
                 </div>
             </div>
         </div>
+        
+        <div id="scroll-progress" 
+            class="absolute bottom-0 left-0 w-full h-[3px] bg-amber-500 origin-left transition-transform duration-75" 
+            aria-hidden="true">
+        </div>
     </header>
 
     
@@ -310,8 +350,8 @@
                 
                 <div class="lg:col-span-7 text-center lg:text-left reveal-on-scroll reveal-fade-up">
                     
+                    
                     <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 mb-8">
-                        <!-- <span class="w-2 h-2 rounded-full bg-[#2563EB] animate-pulse"></span> -->
                         <span class="text-xs font-bold text-[#2563EB] tracking-wide font-heading">
                             UI/UX & Front-End Dev
                         </span>
@@ -321,7 +361,6 @@
                     <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight text-slate-900 mb-6">
                         <span class="gradient-text">Hi, I'm</span> <br>
                         Yuma Akhunza Kausar Putra
-
                     </h1>
 
                     
@@ -332,7 +371,8 @@
 
                     
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-
+                        
+                        
                         <a href="mailto:<?php echo e($profile->contact_email); ?>?subject=Tanya%20Projek%20Portofolio"
                             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-[#2563EB] bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
                             <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -340,28 +380,16 @@
                             </svg>
                             Contact me
                         </a>
-                        <!-- <a href="mailto:<?php echo e($profile->contact_email); ?>"
-                            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-[#2563EB] bg-blue-50 border border-blue-200 hover:bg-blue-100 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0">
-                            <svg class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
-                            Contact me
-                        </a> -->
+
+                        
                         <a href="<?php echo e(asset('files/CV Yuma Akhunza.pdf')); ?>" download="CV_Yuma_Akhunza.pdf"
-                            class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-lg shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0">
-                                
-                                <svg class="w-4.5 h-4.5 transition-transform duration-200 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                                </svg>
-                                Download CV
-                        </a>
-                        <!-- <a href="#" onclick="alert('Berkas CV diunduh secara lokal.'); return false;"
                             class="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-lg shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0">
                             <svg class="w-4.5 h-4.5 transition-transform duration-200 group-hover:translate-y-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
                             </svg>
                             Download CV
-                        </a> -->
+                        </a>
+
                     </div>
                 </div>
 
@@ -369,22 +397,22 @@
                 <div class="lg:col-span-5 flex justify-center reveal-on-scroll reveal-scale delay-200">
                     <div class="relative w-80 h-80 sm:w-96 sm:h-96">
                         
+                        
                         <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#2563EB] to-[#7C3AED] rotate-6 opacity-15 blur-2xl animate-pulse"></div>
                         <div class="absolute inset-0 rounded-3xl bg-gradient-to-bl from-blue-400 to-indigo-600 -rotate-3 opacity-10 blur-lg"></div>
 
                         
-                        <div class="relative w-full h-full bg-white rounded-3xl border border-slate-200 shadow-2xl p-8 flex flex-col justify-between overflow-hidden ">
+                        <div class="relative w-full h-full bg-white rounded-3xl border border-slate-200 shadow-2xl p-8 flex flex-col justify-between overflow-hidden">
+                            
+                            
                             <div class="flex justify-between items-start">
                                 <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center text-white font-heading font-extrabold text-3xl shadow-lg shadow-blue-500/20">
                                     <?php echo e(mb_substr($profile->name, 0, 1)); ?>
 
                                 </div>
-                                <!-- <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-200">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                                    Tersedia
-                                </span>  -->
                             </div>
 
+                            
                             <div>
                                 <h3 class="font-heading font-bold text-xl text-slate-900 leading-tight">
                                     <?php echo e($profile->name); ?>
@@ -399,19 +427,21 @@
                                 </p>
                             </div>
 
+                            
                             <div class="flex flex-wrap gap-1.5 border-t border-slate-100 pt-4">
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">Laravel</span>
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">PHP</span>
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">Blade</span>
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">Tailwind</span>
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">bootstrap</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">Bootstrap</span>
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">MySQL</span>
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">Figma</span>
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">Rest API</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">REST API</span>
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">Git</span>
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">Github</span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">GitHub</span>
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-lg text-[10px] font-semibold bg-blue-50/80 backdrop-blur-xs text-blue-700 border border-blue-100/60">Canva</span>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -423,8 +453,6 @@
     
     <section id="skills" class="py-24 bg-white border-y border-slate-200/80 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-
 
             
             <div class="text-center max-w-2xl mx-auto mb-16 reveal-on-scroll reveal-fade-up">
@@ -450,38 +478,38 @@
                         2019 - 2022
                     </span>
                     
-                <div class="glass-card rounded-2xl p-6 sm:p-8 bento-highlight bg-white/70 backdrop-blur-xl border border-slate-200/80 shadow-xl shadow-slate-900/5 hover:border-blue-300/60 transition-all duration-300 relative overflow-hidden">
-                    
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 bento-highlight bg-white/70 backdrop-blur-xl border border-slate-200/80 shadow-xl shadow-slate-900/5 hover:border-blue-300/60 transition-all duration-300 relative overflow-hidden">
+                        
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl pointer-events-none"></div>
 
-                    <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2019 - 2022</span>
-                    <h3 class="font-heading font-bold text-slate-900 text-base sm:text-lg" data-lang-id="SMAN 3 Taruna Angkasa, Jawa Timur" data-lang-en="Senior High School 3 Taruna Angkasa, East Java">Senior High School 3 Taruna Angkasa, East Java</h3>
-                    <div class="mt-1">
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50" data-lang-id="SMA, IPA" data-lang-en="Senior High School, Natural Science">Senior High School, Natural Science</span>
+                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2019 - 2022</span>
+                        <h3 class="font-heading font-bold text-slate-900 text-base sm:text-lg" data-lang-id="SMAN 3 Taruna Angkasa, Jawa Timur" data-lang-en="Senior High School 3 Taruna Angkasa, East Java">Senior High School 3 Taruna Angkasa, East Java</h3>
+                        <div class="mt-1">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50" data-lang-id="SMA, IPA" data-lang-en="Senior High School, Natural Science">Senior High School, Natural Science</span>
+                        </div>
+
+                        
+                        <ul class="mt-4 space-y-2.5 text-xs text-slate-500 font-medium leading-relaxed">
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
+                                <span data-lang-id="Ketua Divisi TIK (OSIS), Koordinator Literasi Digital, dan Anggota Aktif Pramuka." data-lang-en="Head of ICT Division (OSIS), Digital Literacy Coordinator, and Active Member of Scout Organization (Pramuka).">
+                                    Head of ICT Division (OSIS), Digital Literacy Coordinator, and Active Member of Scout Organization (Pramuka).
+                                </span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
+                                <span data-lang-id="Mengelola branding digital dan strategi konten sekolah, berhasil menerbitkan 50+ aset kreatif untuk media sosial." data-lang-en="Managed the school's digital branding and content strategy, successfully publishing 50+ creative assets for social media.">
+                                    Managed the school's digital branding and content strategy, successfully publishing 50+ creative assets for social media.
+                                </span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
+                                <span data-lang-id="Menjaga standar akademik tinggi di bidang sains dan matematika, sekaligus mengasah kemampuan awal dalam desain digital." data-lang-en="Maintained high academic standards in science and mathematics, while developing early technical skills in digital design.">
+                                    Maintained high academic standards in science and mathematics, while developing early technical skills in digital design.
+                                </span>
+                            </li>
+                        </ul>
                     </div>
-
-                    
-                    <ul class="mt-4 space-y-2.5 text-xs text-slate-500 font-medium leading-relaxed">
-                        <li class="flex items-start gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
-                            <span data-lang-id="Ketua Divisi TIK (OSIS), Koordinator Literasi Digital, dan Anggota Aktif Pramuka." data-lang-en="Head of ICT Division (OSIS), Digital Literacy Coordinator, and Active Member of Scout Organization (Pramuka).">
-                                Head of ICT Division (OSIS), Digital Literacy Coordinator, and Active Member of Scout Organization (Pramuka).
-                            </span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
-                            <span data-lang-id="Mengelola branding digital dan strategi konten sekolah, berhasil menerbitkan 50+ aset kreatif untuk media sosial." data-lang-en="Managed the school's digital branding and content strategy, successfully publishing 50+ creative assets for social media.">
-                                Managed the school's digital branding and content strategy, successfully publishing 50+ creative assets for social media.
-                            </span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
-                            <span data-lang-id="Menjaga standar akademik tinggi di bidang sains dan matematika, sekaligus mengasah kemampuan awal dalam desain digital." data-lang-en="Maintained high academic standards in science and mathematics, while developing early technical skills in digital design.">
-                                Maintained high academic standards in science and mathematics, while developing early technical skills in digital design.
-                            </span>
-                        </li>
-                    </ul>
-                </div>
                 </div>
 
                 
@@ -492,38 +520,38 @@
                         2022 - Present
                     </span>
 
-                <div class="glass-card rounded-2xl p-6 sm:p-8 bento-highlight bg-white/70 backdrop-blur-xl border border-slate-200/80 shadow-xl shadow-slate-900/5 hover:border-blue-300/60 transition-all duration-300 relative overflow-hidden">
-                    
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 bento-highlight bg-white/70 backdrop-blur-xl border border-slate-200/80 shadow-xl shadow-slate-900/5 hover:border-blue-300/60 transition-all duration-300 relative overflow-hidden">
+                        
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl pointer-events-none"></div>
 
-                    <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2022 - Selesai</span>
-                    <h3 class="font-heading font-bold text-slate-900 text-base sm:text-lg" data-lang-id="Politeknik Negeri Malang" data-lang-en="State Polytechnic of Malang">State Polytechnic of Malang</h3>
-                    <div class="mt-1">
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50" data-lang-id="D4 Teknik Informatika" data-lang-en="Bachelor of Applied Science in Informatics Engineering">Bachelor of Applied Science in Informatics Engineering</span>
+                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2022 - Selesai</span>
+                        <h3 class="font-heading font-bold text-slate-900 text-base sm:text-lg" data-lang-id="Politeknik Negeri Malang" data-lang-en="State Polytechnic of Malang">State Polytechnic of Malang</h3>
+                        <div class="mt-1">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50" data-lang-id="D4 Teknik Informatika" data-lang-en="Bachelor of Applied Science in Informatics Engineering">Bachelor of Applied Science in Informatics Engineering</span>
+                        </div>
+
+                        
+                        <ul class="mt-4 space-y-2.5 text-xs text-slate-500 font-medium leading-relaxed">
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
+                                <span data-lang-id="Wakil Ketua Dewan Perwakilan Mahasiswa (DPM) dan Ketua Angkatan 2023 (DPM)." data-lang-en="Vice Chairman of Student Representative Council (DPM), Head of Batch 2023 (DPM).">
+                                    Vice Chairman of Student Representative Council (DPM), Head of Batch 2023 (DPM).
+                                </span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
+                                <span data-lang-id="Fokus pada Rekayasa Perangkat Lunak, Pengembangan Aplikasi Mobile, dan Desain UI/UX." data-lang-en="Focused on Software Engineering, Mobile Development, and UI/UX Design.">
+                                    Focused on Software Engineering, Mobile Development, and UI/UX Design.
+                                </span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
+                                <span data-lang-id="Aktif dalam Dewan Perwakilan Mahasiswa (DPM) dan berbagai proyek teknis." data-lang-en="Active in Student Representative Council (DPM) and various technical projects.">
+                                    Active in Student Representative Council (DPM) and various technical projects.
+                                </span>
+                            </li>
+                        </ul>
                     </div>
-
-                    
-                    <ul class="mt-4 space-y-2.5 text-xs text-slate-500 font-medium leading-relaxed">
-                        <li class="flex items-start gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
-                            <span data-lang-id="Wakil Ketua Dewan Perwakilan Mahasiswa (DPM) dan Ketua Angkatan 2023 (DPM)." data-lang-en="Vice Chairman of Student Representative Council (DPM), Head of Batch 2023 (DPM).">
-                                Vice Chairman of Student Representative Council (DPM), Head of Batch 2023 (DPM).
-                            </span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
-                            <span data-lang-id="Fokus pada Rekayasa Perangkat Lunak, Pengembangan Aplikasi Mobile, dan Desain UI/UX." data-lang-en="Focused on Software Engineering, Mobile Development, and UI/UX Design.">
-                                Focused on Software Engineering, Mobile Development, and UI/UX Design.
-                            </span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
-                            <span data-lang-id="Aktif dalam Dewan Perwakilan Mahasiswa (DPM) dan berbagai proyek teknis." data-lang-en="Active in Student Representative Council (DPM) and various technical projects.">
-                                Active in Student Representative Council (DPM) and various technical projects.
-                            </span>
-                        </li>
-                    </ul>
-                </div>
                 </div>
 
                 
@@ -534,32 +562,32 @@
                         2026 - Present
                     </span>
 
-                <div class="glass-card rounded-2xl p-6 sm:p-8 bento-highlight bg-white/70 backdrop-blur-xl border border-slate-200/80 shadow-xl shadow-slate-900/5 hover:border-blue-300/60 transition-all duration-300 relative overflow-hidden">
-                    
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="glass-card rounded-2xl p-6 sm:p-8 bento-highlight bg-white/70 backdrop-blur-xl border border-slate-200/80 shadow-xl shadow-slate-900/5 hover:border-blue-300/60 transition-all duration-300 relative overflow-hidden">
+                        
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl pointer-events-none"></div>
 
-                    <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2026 - Present</span>
-                    <h3 class="font-heading font-bold text-slate-900 text-base sm:text-lg" data-lang-id="Praktik Kerja Lapangan (PKL) di PT. Rekaindo Global Jasa" data-lang-en="Field Work Practice at PT. Rekaindo Global Jasa">Field Work Practice</h3>
-                    <div class="mt-1">
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50" data-lang-id="Front-End, UI/UX, & Desain Grafis" data-lang-en="Front-End, UI/UX, & Graphic Design">Front-End, UI/UX, & Graphic Design</span>
+                        <span class="md:hidden block text-[10px] font-bold text-[#2563EB] mb-2 uppercase tracking-wide">2026 - Present</span>
+                        <h3 class="font-heading font-bold text-slate-900 text-base sm:text-lg" data-lang-id="Praktik Kerja Lapangan (PKL) di PT. Rekaindo Global Jasa" data-lang-en="Field Work Practice at PT. Rekaindo Global Jasa">Field Work Practice</h3>
+                        <div class="mt-1">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-100/50" data-lang-id="Front-End, UI/UX, & Desain Grafis" data-lang-en="Front-End, UI/UX, & Graphic Design">Front-End, UI/UX, & Graphic Design</span>
+                        </div>
+
+                        
+                        <ul class="mt-4 space-y-2.5 text-xs text-slate-500 font-medium leading-relaxed">
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
+                                <span data-lang-id="Implementasi alur kerja pengembangan Front-End, perancangan antarmuka UI/UX, serta pembuatan aset desain grafis." data-lang-en="Implementation of Front-End development workflows, UI/UX interface design, and graphic design asset creation.">
+                                    Implementation of Front-End development workflows, UI/UX interface design, and graphic design asset creation.
+                                </span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
+                                <span data-lang-id="Penelitian berfokus pada optimasi performa antarmuka pengguna berbasis komponen." data-lang-en="Research focuses on optimizing the performance of component-based user interfaces.">
+                                    Research focuses on optimizing the performance of component-based user interfaces.
+                                </span>
+                            </li>
+                        </ul>
                     </div>
-
-                    
-                    <ul class="mt-4 space-y-2.5 text-xs text-slate-500 font-medium leading-relaxed">
-                        <li class="flex items-start gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
-                            <span data-lang-id="Implementasi alur kerja pengembangan Front-End, perancangan antarmuka UI/UX, serta pembuatan aset desain grafis." data-lang-en="Implementation of Front-End development workflows, UI/UX interface design, and graphic design asset creation.">
-                                Implementation of Front-End development workflows, UI/UX interface design, and graphic design asset creation.
-                            </span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <span class="w-1.5 h-1.5 rounded-full bg-blue-100 ring-4 ring-blue-50/80 mt-1.5 flex-shrink-0"></span>
-                            <span data-lang-id="Penelitian berfokus pada optimasi performa antarmuka pengguna berbasis komponen." data-lang-en="Research focuses on optimizing the performance of component-based user interfaces.">
-                                Research focuses on optimizing the performance of component-based user interfaces.
-                            </span>
-                        </li>
-                    </ul>
-                </div>
                 </div>
 
             </div>
@@ -697,9 +725,9 @@
 
                     
                     <div class="w-12 h-12 rounded-2xl bg-white/90 backdrop-blur-md text-indigo-600 flex items-center justify-center border border-indigo-100/80 mb-4 z-10 shadow-md group-hover:scale-110 transition-transform duration-300">
-<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-</svg>
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+    </svg>
                     </div>
                 </div>
 
@@ -906,9 +934,10 @@
         </div>
     </section>
 
-    
+
     <section id="contact" class="py-24 transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
             
             <div class="text-center mb-14 reveal-on-scroll reveal-fade-up">
                 <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 gradient-text" data-lang-id="Hubungi Saya" data-lang-en="Get In Touch">
@@ -919,22 +948,29 @@
                 </p>
             </div>
 
+            
             <div class="glass-card rounded-3xl overflow-hidden md:grid md:grid-cols-5 bg-white/70 backdrop-blur-xl border border-slate-200/80 shadow-2xl shadow-slate-900/5 reveal-on-scroll reveal-scale relative">
+                
                 
                 <div class="absolute -top-20 -left-20 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="absolute -bottom-20 -right-20 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 
-                <div class="md:col-span-2 bg-[#2563EB] p-8 sm:p-10 flex flex-col justify-between text-white shadow-xl shadow-blue-600/20 reveal-on-scroll reveal-left delay-100 relative overflow-hidden bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-md shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+                <div class="md:col-span-2 bg-[#2563EB] p-8 sm:p-10 flex flex-col justify-between text-white shadow-xl shadow-blue-600/20 reveal-on-scroll reveal-left delay-100 relative overflow-hidden bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-md shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 ">
+                    
                     
                     <div class="absolute -top-10 -right-10 w-36 h-36 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
                     <div class="absolute -bottom-10 -left-10 w-28 h-28 bg-white/5 rounded-full blur-xl pointer-events-none"></div>
 
                     <div class="relative z-10">
+                        
                         <h3 class="font-heading font-bold text-lg mb-1" data-lang-id="Informasi Kontak" data-lang-en="Contact Information">Contact Information</h3>
                         <p class="text-blue-100 text-xs leading-relaxed mb-8" data-lang-id="Hubungi saya melalui saluran komunikasi digital di bawah ini." data-lang-en="Contact us via the digital communication channels below.">Contact us via the digital communication channels below.</p>
 
+                        
                         <div class="space-y-4">
+                            
+                            
                             <a href="mailto:<?php echo e($profile->contact_email); ?>" class="flex items-center gap-3 text-blue-100 hover:text-white transition-all text-xs group">
                                 <span class="w-9 h-9 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 group-hover:bg-white/25 group-hover:scale-105 flex items-center justify-center transition-all shrink-0 shadow-sm">
                                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -942,6 +978,7 @@
                                 <span class="truncate font-semibold"><?php echo e($profile->contact_email); ?></span>
                             </a>
 
+                            
                             <?php if(!empty($profile->social_links['github'])): ?>
                                 <a href="<?php echo e($profile->social_links['github']); ?>" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-all text-xs group">
                                     <span class="w-9 h-9 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 group-hover:bg-white/25 group-hover:scale-105 flex items-center justify-center transition-all shrink-0 shadow-sm">
@@ -950,6 +987,8 @@
                                     <span class="font-semibold">akhunzakp</span>
                                 </a>
                             <?php endif; ?>
+
+                            
                             <?php if(!empty($profile->social_links['linkedin'])): ?>
                                 <a href="<?php echo e($profile->social_links['linkedin']); ?>" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-all text-xs group">
                                     <span class="w-9 h-9 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 group-hover:bg-white/25 group-hover:scale-105 flex items-center justify-center transition-all shrink-0 shadow-sm">
@@ -959,6 +998,7 @@
                                 </a>
                             <?php endif; ?>
 
+                            
                             <?php if(!empty($profile->social_links['instagram'])): ?>
                                 <a href="<?php echo e($profile->social_links['instagram']); ?>" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-all text-xs group">
                                     <span class="w-9 h-9 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 group-hover:bg-white/25 group-hover:scale-105 flex items-center justify-center transition-all shrink-0 shadow-sm">
@@ -968,6 +1008,7 @@
                                 </a>
                             <?php endif; ?>
 
+                            
                             <a href="https://maps.app.goo.gl/NdFKTGZJx1uSRAPcA" target="_blank" class="flex items-center gap-3 text-blue-100 hover:text-white transition-all text-xs group">
                                 <span class="w-9 h-9 rounded-xl bg-white/15 backdrop-blur-md border border-white/20 group-hover:bg-white/25 group-hover:scale-105 flex items-center justify-center transition-all shrink-0 shadow-sm">
                                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -980,14 +1021,22 @@
 
                 
                 <div class="md:col-span-3 p-8 sm:p-10 reveal-on-scroll reveal-right delay-200 bg-white/50 backdrop-blur-md">
+                    
+                    
                     <form onsubmit="event.preventDefault(); alert('Pesan Anda berhasil dikirim. Terima kasih!');" class="space-y-5">
+                        
+                        
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            
+                            
                             <div>
-                            <label class="block text-[10px] font-semibold text-slate-400 mb-1.5 tracking-wide" for="contact-name" data-lang-id="Nama Anda" data-lang-en="Your Name">Nama Anda</label>
+                                <label class="block text-[10px] font-semibold text-slate-400 mb-1.5 tracking-wide" for="contact-name" data-lang-id="Nama Anda" data-lang-en="Your Name">Nama Anda</label>
                                 <input type="text" id="contact-name" required placeholder="John Doe"
                                     data-lang-id-placeholder="John Doe" data-lang-en-placeholder=""
                                     class="w-full px-4 py-2.5 rounded-xl text-xs bg-slate-50/80 border border-slate-200 text-[#0F172A] focus:ring-2 focus:ring-[#2563EB]/25 focus:border-[#2563EB] focus:bg-white outline-none transition-all">
                             </div>
+
+                            
                             <div>
                                 <label class="block text-[10px] font-semibold text-slate-400 mb-1.5 tracking-wide" for="contact-email" data-lang-id="Alamat Email" data-lang-en="Email Address">Alamat Email</label>
                                 <input type="email" id="contact-email" required placeholder="email@contoh.com"
@@ -995,71 +1044,101 @@
                                     class="w-full px-4 py-2.5 rounded-xl text-xs bg-slate-50/80 border border-slate-200 text-[#0F172A] focus:ring-2 focus:ring-[#2563EB]/25 focus:border-[#2563EB] focus:bg-white outline-none transition-all">
                             </div>
                         </div>
+
+                        
                         <div>
                             <label class="block text-[10px] font-semibold text-slate-400 mb-1.5 tracking-wide" for="contact-subject" data-lang-id="Subjek" data-lang-en="Subject">Subjek</label>
                             <input type="text" id="contact-subject" placeholder="Tawaran Kerja / Pertanyaan Proyek"
                                 data-lang-id-placeholder="Tawaran Kerja / Pertanyaan Proyek" data-lang-en-placeholder="Job Offer / Project Inquiry"
                                 class="w-full px-4 py-2.5 rounded-xl text-xs bg-slate-50/80 border border-slate-200 text-[#0F172A] focus:ring-2 focus:ring-[#2563EB]/25 focus:border-[#2563EB] focus:bg-white outline-none transition-all">
                         </div>
+
+                        
                         <div>
                             <label class="block text-[10px] font-semibold text-slate-400 mb-1.5 tracking-wide" for="contact-message" data-lang-id="Pesan Anda" data-lang-en="Your Message">Pesan Anda</label>
                             <textarea id="contact-message" rows="4" required placeholder="Tuliskan pesan detail Anda di sini..."
                                 data-lang-id-placeholder="Tuliskan pesan detail Anda di sini..." data-lang-en-placeholder="Write your detailed message here..."
                                 class="w-full px-4 py-2.5 rounded-xl text-xs bg-slate-50/80 border border-slate-200 text-[#0F172A] focus:ring-2 focus:ring-[#2563EB]/25 focus:border-[#2563EB] focus:bg-white outline-none resize-none transition-all"></textarea>
                         </div>
+
+                        
                         <button type="submit"
                             class="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-[#2563EB] to-[#7C3AED] hover:from-[#1D4ED8] hover:to-[#6D28D9] shadow-md shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
                             <span data-lang-id="Kirim Pesan" data-lang-en="Send Message">Send Message</span>
                         </button>
                     </form>
                 </div>
+
             </div>
 
         </div>
     </section>
 
-    
-    <footer class="bg-white border-t border-slate-200/80 py-10 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
-                <p class="text-xs text-slate-400 font-medium">
-                    &copy; <?php echo e(date('Y')); ?> <span class="font-semibold text-slate-600"><?php echo e($profile->name); ?></span> | Hak Cipta Dilindungi Undang-Undang |
 
-                    
-                    <a href="<?php echo e(url('/admin')); ?>" class="text-xs font-semibold">
-                        Settings 
-                    </a>
-                </p>
-                <div class="flex items-center gap-6">
-                    <a href="#home"     class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Home page</a>
-                    <a href="#skills"   class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Experience</a>
-                    <a href="#timeline" class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Tech Stack</a>
-                    <a href="#projects" class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors">Project</a>
-                </div>
+<footer class="bg-white border-t border-slate-200/80 py-10 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+            
+            
+            <p class="text-xs text-slate-400 font-medium">
+                &copy; <?php echo e(date('Y')); ?> <span class="font-semibold text-slate-600"><?php echo e($profile->name); ?></span> | <span data-lang-id="Hak Cipta Dilindungi Undang-Undang" data-lang-en="All Rights Reserved">Hak Cipta Dilindungi Undang-Undang</span> |
+
+                
+                <a href="<?php echo e(url('/admin')); ?>" class="text-xs font-semibold" data-lang-id="Pengaturan" data-lang-en="Settings">
+                    Settings 
+                </a>
+            </p>
+
+            
+            <div class="flex items-center gap-6">
+                
+                <a href="#home"     class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors" data-lang-id="Beranda" data-lang-en="Home page">Beranda</a>
+                
+                
+                <a href="#skills"   class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors" data-lang-id="Pengalaman" data-lang-en="Experience">Experience</a>
+                
+                
+                <a href="#timeline" class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors" data-lang-id="Tech Stack" data-lang-en="Tech Stack">Tech Stack</a>
+                
+                
+                <a href="#projects" class="text-xs text-slate-400 hover:text-[#2563EB] font-semibold transition-colors" data-lang-id="Proyek" data-lang-en="Projects">Project</a>
             </div>
+
         </div>
-    </footer>
+    </div>
+</footer>
+
 
     
     <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
     <script>
-        // --- Mobile Menu Toggle ---
+        // ================================================================
+        // --- 1. MOBIL MENU TOGGLE ---
+        // Penanganan interaksi tombol menu navigasi versi seluler (Mobile)
+        // ================================================================
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu    = document.getElementById('mobile-menu');
 
+        // Mengubah status visibilitas menu seluler saat tombol menu diklik
         if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
         }
 
+        // Fungsi pembantu untuk menutup menu seluler secara eksplisit (misal saat navigasi diklik)
         function closeMobileMenu() {
             if (mobileMenu) {
                 mobileMenu.classList.add('hidden');
             }
         }
 
-        // --- Navbar shadow on scroll ---
+        // ================================================================
+        // --- 2. NAVBAR SHADOW ON SCROLL ---
+        // Menambahkan bayangan pada navbar saat halaman mulai digulir
+        // ================================================================
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 10) {
@@ -1069,11 +1148,16 @@
             }
         }, { passive: true });
 
-        // --- Lenis Momentum Smooth Scroll Engine ---
+        // ================================================================
+        // --- 3. LENIS MOMENTUM SMOOTH SCROLL ENGINE ---
+        // Pengaturan dan konfiguarsi mesin pergerakan gulir halus (Lenis)
+        // ================================================================
         let lenis;
+        // Memeriksa apakah pengguna mengaktifkan fitur pengurangan animasi di sistem operasi mereka
         const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         if (!prefersReducedMotion && typeof Lenis !== 'undefined') {
+            // Inisialisasi instance Lenis dengan preferensi waktu & animasi
             lenis = new Lenis({
                 duration: 1.2,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -1084,13 +1168,14 @@
                 touchMultiplier: 1.5,
             });
 
+            // Loop animasi berkelanjutan untuk memperbarui status pengguliran Lenis
             function raf(time) {
                 lenis.raf(time);
                 requestAnimationFrame(raf);
             }
             requestAnimationFrame(raf);
 
-            // Intercept internal anchor clicks for Lenis smooth scrolling
+            // Menangani klik pada internal anchor link (#) agar menggunakan gulir halus Lenis
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
@@ -1105,7 +1190,10 @@
             });
         }
 
-        // --- Scroll Progress Indicator Bar ---
+        // ================================================================
+        // --- 4. SCROLL PROGRESS INDICATOR BAR ---
+        // Mengubah skala indikator progres guliran sesuai posisi relatif layar
+        // ================================================================
         const scrollProgress = document.getElementById('scroll-progress');
         window.addEventListener('scroll', () => {
             if (scrollProgress) {
@@ -1117,14 +1205,17 @@
             }
         }, { passive: true });
 
-        // --- Reveal-On-Scroll Intersection Observer ---
+        // ================================================================
+        // --- 5. REVEAL-ON-SCROLL INTERSECTION OBSERVER ---
+        // Menampilkan elemen beranimasi saat muncul di area pandang (viewport)
+        // ================================================================
         const revealElements = document.querySelectorAll('.reveal-on-scroll');
         if ('IntersectionObserver' in window) {
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-revealed');
-                        // Clear will-change after animation finishes for 60fps rendering
+                        // Menghapus properti will-change setelah animasi selesai demi performa render 60fps
                         entry.target.addEventListener('transitionend', () => {
                             entry.target.style.willChange = 'auto';
                         }, { once: true });
@@ -1139,11 +1230,14 @@
 
             revealElements.forEach(el => revealObserver.observe(el));
         } else {
-            // Fallback for older browsers
+            // Fallback animasi langsung untuk peramban web versi lama yang tidak mendukung IntersectionObserver
             revealElements.forEach(el => el.classList.add('is-revealed'));
         }
 
-        // --- Bento Card Hover Mouse Coordinate Glow Effect ---
+        // ================================================================
+        // --- 6. BENTO CARD HOVER MOUSE COORDINATE GLOW EFFECT ---
+        // Melacak posisi kursor mouse pada kartu Bento untuk memberikan efek sorotan (glow)
+        // ================================================================
         const bentoCards = document.querySelectorAll('.bento-highlight');
         bentoCards.forEach(card => {
             card.addEventListener('mousemove', e => {
@@ -1155,7 +1249,10 @@
             });
         });
 
-        // --- Smooth scroll active link highlight ---
+        // ================================================================
+        // --- 7. SMOOTH SCROLL ACTIVE LINK HIGHLIGHT ---
+        // Menandai tautan navigasi utama yang aktif sesuai seksi yang sedang dilihat
+        // ================================================================
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('header a.nav-link');
 
@@ -1175,16 +1272,21 @@
             sections.forEach(s => observer.observe(s));
         }
 
-        // --- Client-Side Translation Engine ---
+        // ================================================================
+        // --- 8. CLIENT-SIDE TRANSLATION ENGINE ---
+        // Mesin penerjemah konten dinamis dua bahasa (Bahasa Indonesia & Bahasa Inggris)
+        // ================================================================
         const langMenuBtn = document.getElementById('lang-menu-btn');
         const langDropdown = document.getElementById('lang-dropdown');
 
+        // Menampilkan atau menyembunyikan menu drop-down pilihan bahasa
         if (langMenuBtn && langDropdown) {
             langMenuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 langDropdown.classList.toggle('hidden');
             });
 
+            // Menutup drop-down saat pengguna mengklik di luar area menu
             document.addEventListener('click', (e) => {
                 if (!langDropdown.contains(e.target) && !langMenuBtn.contains(e.target)) {
                     langDropdown.classList.add('hidden');
@@ -1192,14 +1294,15 @@
             });
         }
 
+        // Fungsi utama untuk mengubah dan menerapkan bahasa yang dipilih ke seluruh halaman
         function setLanguage(lang) {
-            // Update Active Label in Header
+            // Memperbarui label bahasa yang sedang aktif di Header
             const currentLangText = document.getElementById('current-lang-text');
             if (currentLangText) {
                 currentLangText.textContent = lang.toUpperCase() === 'ID' ? 'ID' : 'EN';
             }
 
-            // Update Desktop Dropdown Options UI
+            // Memperbarui tampilan UI pada pilihan drop-down desktop
             document.querySelectorAll('.lang-option').forEach(opt => {
                 const isSelected = opt.getAttribute('data-lang') === lang;
                 const check = opt.querySelector('.lang-check');
@@ -1211,7 +1314,7 @@
                 opt.classList.toggle('font-bold', isSelected);
             });
 
-            // Update Mobile Toggle Buttons UI
+            // Memperbarui tampilan UI pada tombol pilihan bahasa versi seluler
             document.querySelectorAll('.mobile-lang-btn').forEach(btn => {
                 const isSelected = btn.getAttribute('data-lang') === lang;
                 btn.classList.toggle('bg-white', isSelected);
@@ -1222,14 +1325,15 @@
                 btn.classList.toggle('font-semibold', !isSelected);
             });
 
+            // Menyembunyikan kembali drop-down bahasa setelah diklik
             if (langDropdown) {
                 langDropdown.classList.add('hidden');
             }
 
-            // Persist User Preference
+            // Menyimpan pilihan bahasa pengguna ke penyimpanan lokal browser (localStorage)
             localStorage.setItem('user_language', lang);
 
-            // Dynamic Content Translation via data-lang-id and data-lang-en
+            // Menerjemahkan elemen teks berbasis atribut data-lang-id dan data-lang-en
             const elementsToTranslate = document.querySelectorAll('[data-lang-id], [data-lang-en]');
             elementsToTranslate.forEach(el => {
                 const targetText = el.getAttribute(`data-lang-${lang}`);
@@ -1238,7 +1342,7 @@
                 }
             });
 
-            // Input Placeholder Translation via data-lang-id-placeholder and data-lang-en-placeholder
+            // Menerjemahkan teks placeholder input berbasis atribut data-lang-id-placeholder dan data-lang-en-placeholder
             const inputsToTranslate = document.querySelectorAll('[data-lang-id-placeholder], [data-lang-en-placeholder]');
             inputsToTranslate.forEach(input => {
                 const targetPlaceholder = input.getAttribute(`data-lang-${lang}-placeholder`);
@@ -1248,7 +1352,7 @@
             });
         }
 
-        // Auto-Initialize Saved Language Preference (Default to 'id')
+        // Inisialisasi otomatis preferensi bahasa yang tersimpan saat pertama kali halaman dimuat (Default ke 'id')
         const savedLang = localStorage.getItem('user_language') || 'id';
         setLanguage(savedLang);
     </script>
